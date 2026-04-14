@@ -280,6 +280,14 @@ function TrustBand({ t }) {
 }
 
 function Home({ t }) {
+  const featuredWorks = [
+    { src: OUR_WORK[0], type: "portrait" },
+    { src: OUR_WORK[1], type: "portrait" },
+    { src: OUR_WORK[2], type: "landscape" },
+    { src: OUR_WORK[3], type: "landscape" },
+    { src: OUR_WORK[4], type: "portrait" },
+    { src: OUR_WORK[5], type: "portrait" },
+  ];
   return (
     <>
       <Hero t={t} />
@@ -387,15 +395,6 @@ function Home({ t }) {
               Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.
             </p>
           </div>
-
-         const featuredWorks = [
-  { src: OUR_WORK[0], type: "portrait" },
-  { src: OUR_WORK[1], type: "portrait" },
-  { src: OUR_WORK[2], type: "landscape" },
-  { src: OUR_WORK[3], type: "landscape" },
-  { src: OUR_WORK[4], type: "portrait" },
-  { src: OUR_WORK[5], type: "portrait" },
-];
 
 <div className="gallery-grid reveal">
   {featuredWorks.map((item, index) => (
