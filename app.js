@@ -280,55 +280,39 @@ function TrustBand({ t }) {
 }
 
 function Home({ t }) {
-  const featuredWorks = OUR_WORK.slice(0, 6);
   return (
     <>
       <Hero t={t} />
       <TrustBand t={t} />
-    
+
+      <section className="section">
+        <div className="shell grid-2 feature-split">
+          <div className="feature-media reveal">
+            <img src="assets/img/Onas/onas-01.webp" alt="Vzorky a materiály" />
+            <div className="feature-note">
+              <span className="script">Návrh začíná v prostoru</span>
+              <div>
+                Materiál vybíráme v reálném světle, v konkrétním interiéru a s ohledem na jeho rytmus.
+              </div>
+            </div>
+          </div>
+
           <div className="feature-copy reveal">
             <h2 className="display h2">{t.homeAboutH}</h2>
             <p className="copy">{t.homeAbout}</p>
             <p className="copy">
               Pracujeme s tím, co v prostoru skutečně hraje roli — světlo, proporce, potřeba soukromí,
-              způsob používání interiéru i jemnost materiálů. Nejde jen o to okno zakrýt. Jde o to, aby prostor fungoval lépe.
+              způsob používání interiéru i jemnost materiálů. Nejde jen o to okno zakrýt. Jde o to,
+              aby prostor fungoval lépe.
             </p>
             <div style={{ marginTop: 24, display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <button className="button button-primary" onClick={() => go("/process")}>{t.processH}</button>
-              <button className="button button-secondary" onClick={() => go("/pricing")}>{t.priceH}</button>
-          </div>
-        </div>
-      </section>
-
-     <section className="section section-tight">
-  <div className="shell">
-    <div className="section-header reveal">
-      <h2 className="display h2">Interiér se nemění jen vzhledem. Mění se pocitem.</h2>
-      <p className="lead">{t.inspLead}</p>
-    </div>
-
-    <div className="atmos-grid">
-      {ATMOS_IMAGES.map((src, index) => (
-        <figure className="atmos-card reveal" key={src}>
-          <img src={src} alt={`Atmosféra interiéru ${index + 1}`} />
-          <figcaption>{(t.inspTags || [])[index]}</figcaption>
-        </figure>
-      ))}
-    </div>
-  </div>
-</section>
-
-      <section className="section">
-        <div className="shell">
-          <div className="quote-panel reveal">
-            <div>
-              <span className="script">Atmosféra nevzniká náhodou</span>
-              <p>
-                Správně navržené stínění mění, jak prostor působí během dne i večer.
-                Dává mu klid, soukromí, měkkost a rytmus, který je příjemný na pohled i pro každodenní život.
-              </p>
+              <button className="button button-primary" onClick={() => go("/process")}>
+                {t.processH}
+              </button>
+              <button className="button button-secondary" onClick={() => go("/pricing")}>
+                {t.priceH}
+              </button>
             </div>
-            <button className="button button-ghost" onClick={() => go("/contact")}>{t.writeMe}</button>
           </div>
         </div>
       </section>
@@ -336,29 +320,43 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-          
+            <h2 className="display h2">Řešení, která drží atmosféru i funkci</h2>
+            <p className="lead">
+              Každá vrstva má svoji roli. Působení prostoru stojí na detailu, ne na množství prvků.
+            </p>
+          </div>
+
+          <div className="grid-3">
+            {(t.services || []).map((service, index) => (
+              <article className="card service-card reveal" key={service.name}>
+                <div className="service-card-top">
+                  <h3>{service.name}</h3>
+                  <p>{service.note}</p>
+                </div>
+                <div className="service-card-media">
+                  <img src={HOME_SERVICE_IMAGES[index] || HOME_SERVICE_IMAGES[0]} alt={service.name} />
+                </div>
+                <div className="service-card-foot">{t.serviceCardCta}</div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-tight">
+        <div className="shell">
+          <div className="section-header reveal">
             <h2 className="display h2">Interiér se nemění jen vzhledem. Mění se pocitem.</h2>
             <p className="lead">{t.inspLead}</p>
           </div>
-          <div className="ribbon-gallery">
-            <figure className="ribbon-tall reveal">
-              <img src={ATMOS_IMAGES[0]} alt="Atmosféra interiéru" />
-              <figcaption>{(t.inspTags || [])[0]}</figcaption>
-            </figure>
-            <div className="ribbon-stack">
-              <figure className="reveal">
-                <img src={ATMOS_IMAGES[1]} alt="Atmosféra interiéru" />
-                <figcaption>{(t.inspTags || [])[1]}</figcaption>
+
+          <div className="atmos-grid">
+            {ATMOS_IMAGES.map((src, index) => (
+              <figure className="atmos-card reveal" key={src}>
+                <img src={src} alt={`Atmosféra interiéru ${index + 1}`} />
+                <figcaption>{(t.inspTags || [])[index]}</figcaption>
               </figure>
-              <figure className="reveal">
-                <img src={ATMOS_IMAGES[2]} alt="Atmosféra interiéru" />
-                <figcaption>{(t.inspTags || [])[2]}</figcaption>
-              </figure>
-            </div>
-            <figure className="ribbon-tall reveal">
-              <img src={featuredWorks[3]} alt="Realizace interiéru" />
-              <figcaption>{(t.inspTags || [])[3]}</figcaption>
-            </figure>
+            ))}
           </div>
         </div>
       </section>
@@ -366,9 +364,9 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            
             <h2 className="display h2">Luxusní pocit nevzniká okázalostí. Vzniká jistotou.</h2>
           </div>
+
           <div className="grid-3">
             {(t.benefits || []).map((item) => (
               <article className="card benefit-card reveal" key={item.name}>
@@ -384,19 +382,28 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-           
             <h2 className="display h2">Hotové realizace</h2>
-            <p className="lead">Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.</p>
+            <p className="lead">
+              Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.
+            </p>
           </div>
+
           <div className="gallery-grid reveal">
-            {featuredWorks.map((src, index) => (
-              <button className="gallery-item" key={src} onClick={() => openGalleryLightbox(index, featuredWorks)}>
+            {OUR_WORK.slice(0, 6).map((src, index) => (
+              <button
+                className="gallery-item"
+                key={src}
+                onClick={() => openGalleryLightbox(index, OUR_WORK.slice(0, 6))}
+              >
                 <img src={src} alt={`Realizace ${index + 1}`} />
               </button>
             ))}
           </div>
+
           <div style={{ marginTop: 24 }} className="reveal">
-            <button className="button button-secondary" onClick={() => go("/gallery")}>{t.galleryShowAll}</button>
+            <button className="button button-secondary" onClick={() => go("/gallery")}>
+              {t.galleryShowAll}
+            </button>
           </div>
         </div>
       </section>
@@ -404,7 +411,6 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-           
             <h2 className="display h2">To podstatné, co chce klient vědět předem</h2>
           </div>
           <Faq items={t.faq || []} />
@@ -413,12 +419,15 @@ function Home({ t }) {
 
       <section className="section">
         <div className="shell accent-surface card card-inner reveal">
-        
           <h2 className="display h2">Nejdřív se podíváme na váš prostor. Až potom navrhujeme.</h2>
           <p className="lead">{t.homeCtaNote}</p>
           <div style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
-            <button className="button button-primary" onClick={() => go("/contact")}>{t.cta}</button>
-            <button className="button button-secondary" onClick={() => go("/process")}>{t.processH}</button>
+            <button className="button button-primary" onClick={() => go("/contact")}>
+              {t.cta}
+            </button>
+            <button className="button button-secondary" onClick={() => go("/process")}>
+              {t.processH}
+            </button>
           </div>
         </div>
       </section>
