@@ -281,12 +281,13 @@ function TrustBand({ t }) {
 
 function Home({ t }) {
 const featuredWorks = [
-  { src: OUR_WORK[0], type: "portrait" },
-  { src: OUR_WORK[1], type: "landscape" },
-  { src: OUR_WORK[2], type: "landscape" },
-  { src: OUR_WORK[3], type: "landscape" },
-  { src: OUR_WORK[4], type: "landscape" },
-  { src: OUR_WORK[5], type: "portrait" },
+  { src: OUR_WORK[0], type: "portrait" },   // 1
+  { src: OUR_WORK[1], type: "landscape" },  // 2
+  { src: OUR_WORK[5], type: "portrait" },   // 3
+
+  { src: OUR_WORK[2], type: "landscape" },  // 4
+  { src: OUR_WORK[3], type: "landscape" },  // 5
+  { src: OUR_WORK[4], type: "landscape" },  // 6
 ];
   return (
     <>
