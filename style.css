@@ -421,6 +421,7 @@ body.menu-open,body.modal-open{overflow:hidden}
   grid-template-rows:repeat(2,320px);
   gap:18px;
   overflow:hidden;
+  align-items:stretch;
 }
 
 .gallery-item-home{
