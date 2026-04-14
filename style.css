@@ -360,10 +360,9 @@ body.menu-open,body.modal-open{overflow:hidden}
 .gallery-grid{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-rows:repeat(2, 320px); /* 👈 klíčová věc */
   gap:18px;
-  grid-auto-rows:340px;
-  grid-auto-flow:dense;
-  align-items:stretch;
+  overflow:hidden; /* 👈 aby nic nepřeteklo */
 }
 
 .gallery-item{
@@ -383,12 +382,10 @@ body.menu-open,body.modal-open{overflow:hidden}
   grid-column:span 1;
   grid-row:span 1;
 }
-
 .gallery-item.landscape{
   grid-column:span 2;
   grid-row:span 1;
 }
-
 .gallery-item img{
   width:100%;
   height:100%;
