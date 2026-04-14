@@ -542,28 +542,26 @@ function Gallery({ t }) {
 
   return (
     <>
-      <Hero
-        t={t}
-        small
-        image="assets/img/hero/gallery-hero.webp"
-        title={t.galleryH}
-        lead={t.galleryOurWorkP}
-      />
-
       <section className="section section-tight">
         <div className="shell">
-          <div className="section-header reveal">
+          <div className="section-header reveal visible">
             <h2 className="display h2">
               Realizace, ve kterých stínění nepůsobí navíc. Působí správně.
             </h2>
+            <p className="lead">
+              Výběr realizací záclon, závěsů, rolet a technických systémů.
+            </p>
           </div>
 
-          <div className="gallery-grid reveal">
+          <div className="gallery-grid reveal visible">
             {galleryItems.map((item, index) => (
               <button
+                type="button"
                 className={`gallery-item ${item.type}`}
                 key={item.src}
-                onClick={() => openGalleryLightbox(index, galleryItems.map((g) => g.src))}
+                onClick={() =>
+                  openGalleryLightbox(index, galleryItems.map((g) => g.src))
+                }
               >
                 <img src={item.src} alt={`Realizace ${index + 1}`} />
               </button>
@@ -574,22 +572,33 @@ function Gallery({ t }) {
 
       <section className="section">
         <div className="shell">
-          <div className="section-header reveal">
+          <div className="section-header reveal visible">
             <h2 className="display h2">Spolupráce s architekty a designéry</h2>
             <p className="lead">{t.galleryPartnersP}</p>
           </div>
 
           <div className="partner-grid">
             {PARTNERS.map((partner) => (
-              <article className="card partner-card reveal" key={partner.key}>
+              <article className="card partner-card reveal visible" key={partner.key}>
                 <h3>{partner.name}</h3>
                 <p>{(t.galleryPartnersNotes || {})[partner.key]}</p>
+
                 <div className="partner-photos">
                   {partner.images.map((src, idx) => (
-                    <img src={src} alt={`${partner.name} ${idx + 1}`} key={src} />
+                    <img
+                      src={src}
+                      alt={`${partner.name} ${idx + 1}`}
+                      key={src}
+                    />
                   ))}
                 </div>
-                <a className="partner-link" href={partner.url} target="_blank" rel="noreferrer">
+
+                <a
+                  className="partner-link"
+                  href={partner.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {t.galleryVisitWeb}
                 </a>
               </article>
