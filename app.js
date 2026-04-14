@@ -537,7 +537,7 @@ function Pricing({ t, openPricing }) {
 function Gallery({ t }) {
   const galleryItems = OUR_WORK.map((src, index) => ({
     src,
-    type: [2, 5].includes(index % 6) ? "landscape" : "portrait",
+    type: [1, 2, 4, 5].includes(index % 6) ? "landscape" : "portrait",
   }));
 
   return (
@@ -563,7 +563,9 @@ function Gallery({ t }) {
               <button
                 className={`gallery-item ${item.type}`}
                 key={item.src}
-                onClick={() => openGalleryLightbox(index, galleryItems.map((g) => g.src))}
+                onClick={() =>
+                  openGalleryLightbox(index, galleryItems.map((g) => g.src))
+                }
               >
                 <img src={item.src} alt={`Realizace ${index + 1}`} />
               </button>
@@ -584,12 +586,23 @@ function Gallery({ t }) {
               <article className="card partner-card reveal" key={partner.key}>
                 <h3>{partner.name}</h3>
                 <p>{(t.galleryPartnersNotes || {})[partner.key]}</p>
+
                 <div className="partner-photos">
                   {partner.images.map((src, idx) => (
-                    <img src={src} alt={`${partner.name} ${idx + 1}`} key={src} />
+                    <img
+                      src={src}
+                      alt={`${partner.name} ${idx + 1}`}
+                      key={src}
+                    />
                   ))}
                 </div>
-                <a className="partner-link" href={partner.url} target="_blank" rel="noreferrer">
+
+                <a
+                  className="partner-link"
+                  href={partner.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {t.galleryVisitWeb}
                 </a>
               </article>
