@@ -190,7 +190,7 @@ body.menu-open,body.modal-open{overflow:hidden}
 .hero-panel strong{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.64)}
 
 .trust-band{
-  margin-top:-46px;position:relative;z-index:4
+  margin-top: 0px;position:relative;z-index:4
 }
 .trust-grid{
   display:grid;grid-template-columns:repeat(4,1fr);gap:14px
