@@ -361,7 +361,6 @@ body.menu-open,body.modal-open{overflow:hidden}
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:18px;
-  align-items:start;
 }
 
 .gallery-item{
@@ -373,14 +372,7 @@ body.menu-open,body.modal-open{overflow:hidden}
   background:#efe7de;
   cursor:pointer;
   padding:0;
-}
-
-.gallery-item.portrait{
   aspect-ratio: 4 / 5;
-}
-
-.gallery-item.landscape{
-  aspect-ratio: 16 / 10;
 }
 
 .gallery-item img{
