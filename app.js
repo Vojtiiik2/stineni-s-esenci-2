@@ -280,12 +280,12 @@ function TrustBand({ t }) {
 }
 
 function Home({ t }) {
- const featuredWorks = [
+const featuredWorks = [
   { src: OUR_WORK[0], type: "portrait" },
-  { src: OUR_WORK[1], type: "portrait" },
-  { src: OUR_WORK[2], type: "portrait" },
+  { src: OUR_WORK[1], type: "landscape" },
+  { src: OUR_WORK[2], type: "landscape" },
   { src: OUR_WORK[3], type: "landscape" },
-  { src: OUR_WORK[4], type: "portrait" },
+  { src: OUR_WORK[4], type: "landscape" },
   { src: OUR_WORK[5], type: "portrait" },
 ];
   return (
