@@ -360,9 +360,10 @@ body.menu-open,body.modal-open{overflow:hidden}
 .gallery-grid{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  grid-template-rows:repeat(2, 320px); /* 👈 klíčová věc */
+  grid-auto-rows:320px;
   gap:18px;
-  overflow:hidden; /* 👈 aby nic nepřeteklo */
+  grid-auto-flow:dense;
+  align-items:stretch;
 }
 
 .gallery-item{
@@ -382,10 +383,12 @@ body.menu-open,body.modal-open{overflow:hidden}
   grid-column:span 1;
   grid-row:span 1;
 }
+
 .gallery-item.landscape{
   grid-column:span 2;
   grid-row:span 1;
 }
+
 .gallery-item img{
   width:100%;
   height:100%;
@@ -410,6 +413,54 @@ body.menu-open,body.modal-open{overflow:hidden}
 .gallery-item:hover::after{
   opacity:1;
 }
+
+/* homepage realizace */
+.gallery-grid-home{
+  display:grid;
+  grid-template-columns:repeat(8,minmax(0,1fr));
+  grid-template-rows:repeat(2,320px);
+  gap:18px;
+  overflow:hidden;
+}
+
+.gallery-item-home{
+  position:relative;
+  display:block;
+  overflow:hidden;
+  border-radius:24px;
+  border:1px solid rgba(0,0,0,.08);
+  background:#efe7de;
+  cursor:pointer;
+  padding:0;
+  height:100%;
+  min-height:0;
+}
+
+.gallery-item-home img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .45s ease;
+}
+
+.gallery-item-home:hover img{
+  transform:scale(1.02);
+}
+
+.gallery-item-home::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 42%,rgba(31,24,20,.16) 100%);
+  opacity:0;
+  transition:opacity .28s ease;
+}
+
+.gallery-item-home:hover::after{
+  opacity:1;
+}
+
 .partner-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .partner-card{padding:22px}
 .partner-card h3{margin:0 0 8px;font-family:"Cormorant Garamond",serif;font-size:34px;font-weight:600}
@@ -493,7 +544,7 @@ body.menu-open,body.modal-open{overflow:hidden}
 .reveal.visible{opacity:1;transform:none}
 .accent-surface{background:radial-gradient(circle at top right,rgba(223,200,176,.28),transparent 34%),rgba(255,253,250,.76)}
 
-/* === ATMOSFÉRA GRID (nová sekce) === */
+/* === ATMOSFÉRA GRID === */
 .atmos-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -506,7 +557,7 @@ body.menu-open,body.modal-open{overflow:hidden}
   overflow:hidden;
   border-radius:28px;
   background:#e9ded5;
-  aspect-ratio: 4 / 3;
+  aspect-ratio:4 / 3;
 }
 
 .atmos-card img{
@@ -557,18 +608,32 @@ body.menu-open,body.modal-open{overflow:hidden}
   .step-card.reverse .step-media,.step-card.reverse .step-content{order:initial}
   .step-media{min-height:260px}
 
-.gallery-grid{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  grid-auto-rows:280px;
-}
+  .gallery-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-auto-rows:280px;
+  }
 
-.gallery-item.portrait{
-  grid-column:span 1;
-}
+  .gallery-item.portrait{
+    grid-column:span 1;
+  }
 
-.gallery-item.landscape{
-  grid-column:span 2;
-}
+  .gallery-item.landscape{
+    grid-column:span 2;
+  }
+
+  .gallery-grid-home{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:auto;
+  }
+
+  .gallery-item-home{
+    grid-column:span 1 !important;
+    aspect-ratio:4 / 5;
+  }
+
+  .atmos-grid{
+    grid-template-columns:1fr;
+  }
 
   .modal-header{padding:22px 18px 14px}
   .modal-body{padding:0 18px 20px}
@@ -583,15 +648,25 @@ body.menu-open,body.modal-open{overflow:hidden}
   .hero-actions{flex-direction:column;align-items:stretch}
   .trust-grid,.ribbon-stack{grid-template-columns:1fr}
 
-.gallery-grid{
-  grid-template-columns:1fr;
-  grid-auto-rows:260px;
-}
+  .gallery-grid{
+    grid-template-columns:1fr;
+    grid-auto-rows:260px;
+  }
 
-.gallery-item.portrait,
-.gallery-item.landscape{
-  grid-column:span 1;
-}
+  .gallery-item.portrait,
+  .gallery-item.landscape{
+    grid-column:span 1;
+  }
+
+  .gallery-grid-home{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-item-home{
+    grid-column:span 1 !important;
+    aspect-ratio:4 / 5;
+  }
+
   .modal-backdrop{padding:12px}
   .modal-panel{border-radius:24px}
   .range-item,.tier-item,.quote-panel,.footer-bottom,.price-actions{flex-direction:column;align-items:flex-start}
