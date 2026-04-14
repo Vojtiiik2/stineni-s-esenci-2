@@ -285,8 +285,6 @@ function Home({ t }) {
     <>
       <Hero t={t} />
       <TrustBand t={t} />
-
-          </div>
           <div className="feature-copy reveal">
             <h2 className="display h2">{t.homeAboutH}</h2>
             <p className="copy">{t.homeAbout}</p>
