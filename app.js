@@ -280,14 +280,14 @@ function TrustBand({ t }) {
 }
 
 function Home({ t }) {
-  const featuredWorks = [
-    { src: OUR_WORK[0], type: "portrait" },
-    { src: OUR_WORK[1], type: "portrait" },
-    { src: OUR_WORK[2], type: "landscape" },
-    { src: OUR_WORK[3], type: "landscape" },
-    { src: OUR_WORK[4], type: "portrait" },
-    { src: OUR_WORK[5], type: "portrait" },
-  ];
+ const featuredWorks = [
+  { src: OUR_WORK[0], type: "portrait" },
+  { src: OUR_WORK[1], type: "portrait" },
+  { src: OUR_WORK[2], type: "portrait" },
+  { src: OUR_WORK[3], type: "landscape" },
+  { src: OUR_WORK[4], type: "portrait" },
+  { src: OUR_WORK[5], type: "portrait" },
+];
   return (
     <>
       <Hero t={t} />
@@ -399,7 +399,7 @@ function Home({ t }) {
 <div className="gallery-grid reveal">
   {featuredWorks.map((item, index) => (
     <button
-      className="gallery-item"
+      className={`gallery-item ${item.type}`}
       key={item.src}
       onClick={() => openGalleryLightbox(index, featuredWorks.map((w) => w.src))}
     >
@@ -535,7 +535,7 @@ function Pricing({ t, openPricing }) {
 function Gallery({ t }) {
   const galleryItems = OUR_WORK.map((src, index) => ({
     src,
-    type: [0, 1, 4, 5].includes(index % 6) ? "portrait" : "landscape",
+    type: [2, 5].includes(index % 6) ? "landscape" : "portrait",
   }));
 
   return (
