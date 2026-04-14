@@ -286,14 +286,6 @@ function Home({ t }) {
       <Hero t={t} />
       <TrustBand t={t} />
 
-      <section className="section">
-        <div className="shell grid-2 feature-split">
-          <div className="feature-media reveal">
-            <img src="assets/img/Onas/onas-01.webp" alt="Vzorky a materiály" />
-            <div className="feature-note">
-              <span className="script">Návrh začíná v prostoru</span>
-              <div>Materiál vybíráme v reálném světle, v konkrétním interiéru a s ohledem na jeho rytmus.</div>
-            </div>
           </div>
           <div className="feature-copy reveal">
             <h2 className="display h2">{t.homeAboutH}</h2>
@@ -310,28 +302,23 @@ function Home({ t }) {
         </div>
       </section>
 
-      <section className="section section-tight">
-        <div className="shell">
-          <div className="section-header reveal">
-            <h2 className="display h2">Řešení, která drží atmosféru i funkci</h2>
-            <p className="lead">Každá vrstva má svoji roli. Působení prostoru stojí na detailu, ne na množství prvků.</p>
-          </div>
-          <div className="grid-3">
-            {(t.services || []).map((service, index) => (
-              <article className="card service-card reveal" key={service.name}>
-                <div className="service-card-top">
-                  <h3>{service.name}</h3>
-                  <p>{service.note}</p>
-                </div>
-                <div className="service-card-media">
-                  <img src={HOME_SERVICE_IMAGES[index] || HOME_SERVICE_IMAGES[0]} alt={service.name} />
-                </div>
-                <div className="service-card-foot">{t.serviceCardCta}</div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+     <section className="section section-tight">
+  <div className="shell">
+    <div className="section-header reveal">
+      <h2 className="display h2">Interiér se nemění jen vzhledem. Mění se pocitem.</h2>
+      <p className="lead">{t.inspLead}</p>
+    </div>
+
+    <div className="atmos-grid">
+      {ATMOS_IMAGES.map((src, index) => (
+        <figure className="atmos-card reveal" key={src}>
+          <img src={src} alt={`Atmosféra interiéru ${index + 1}`} />
+          <figcaption>{(t.inspTags || [])[index]}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
 
       <section className="section">
         <div className="shell">
