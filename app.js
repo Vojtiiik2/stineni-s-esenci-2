@@ -281,13 +281,13 @@ function TrustBand({ t }) {
 
 function Home({ t }) {
 const featuredWorks = [
-  { src: OUR_WORK[0], type: "portrait" },   // 1
-  { src: OUR_WORK[1], type: "landscape" },  // 2
-  { src: OUR_WORK[5], type: "portrait" },   // 3
+  { src: OUR_WORK[0], cols: "span 2" }, // 1 vlevo
+  { src: OUR_WORK[1], cols: "span 4" }, // 2 uprostřed širší
+  { src: OUR_WORK[5], cols: "span 2" }, // 3 vpravo
 
-  { src: OUR_WORK[2], type: "landscape" },  // 4
-  { src: OUR_WORK[3], type: "landscape" },  // 5
-  { src: OUR_WORK[4], type: "landscape" },  // 6
+  { src: OUR_WORK[2], cols: "span 3" }, // 4 dole vlevo
+  { src: OUR_WORK[3], cols: "span 3" }, // 5 dole uprostřed
+  { src: OUR_WORK[4], cols: "span 2" }, // 6 dole vpravo
 ];
   return (
     <>
@@ -397,11 +397,12 @@ const featuredWorks = [
             </p>
           </div>
 
-<div className="gallery-grid reveal">
+<div className="gallery-grid reveal gallery-grid-home">
   {featuredWorks.map((item, index) => (
     <button
-      className={`gallery-item ${item.type}`}
+      className="gallery-item gallery-item-home"
       key={item.src}
+      style={{ gridColumn: item.cols }}
       onClick={() => openGalleryLightbox(index, featuredWorks.map((w) => w.src))}
     >
       <img src={item.src} alt={`Realizace ${index + 1}`} />
