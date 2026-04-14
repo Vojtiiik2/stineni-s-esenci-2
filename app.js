@@ -296,7 +296,6 @@ function Home({ t }) {
             </div>
           </div>
           <div className="feature-copy reveal">
-            <span className="eyebrow"><span className="script">Jak přemýšlíme</span></span>
             <h2 className="display h2">{t.homeAboutH}</h2>
             <p className="copy">{t.homeAbout}</p>
             <p className="copy">
@@ -314,7 +313,6 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <span className="eyebrow"><span className="script">Co navrhujeme</span></span>
             <h2 className="display h2">Řešení, která drží atmosféru i funkci</h2>
             <p className="lead">Každá vrstva má svoji roli. Působení prostoru stojí na detailu, ne na množství prvků.</p>
           </div>
@@ -353,7 +351,7 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <span className="eyebrow"><span className="script">{t.inspH}</span></span>
+          
             <h2 className="display h2">Interiér se nemění jen vzhledem. Mění se pocitem.</h2>
             <p className="lead">{t.inspLead}</p>
           </div>
@@ -383,7 +381,7 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <span className="eyebrow"><span className="script">{t.benefitsH}</span></span>
+            
             <h2 className="display h2">Luxusní pocit nevzniká okázalostí. Vzniká jistotou.</h2>
           </div>
           <div className="grid-3">
@@ -401,7 +399,7 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <span className="eyebrow"><span className="script">Ukázky</span></span>
+           
             <h2 className="display h2">Hotové realizace</h2>
             <p className="lead">Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.</p>
           </div>
@@ -421,7 +419,7 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <span className="eyebrow"><span className="script">{t.faqH}</span></span>
+           
             <h2 className="display h2">To podstatné, co chce klient vědět předem</h2>
           </div>
           <Faq items={t.faq || []} />
@@ -430,7 +428,7 @@ function Home({ t }) {
 
       <section className="section">
         <div className="shell accent-surface card card-inner reveal">
-          <span className="eyebrow"><span className="script">Další krok</span></span>
+        
           <h2 className="display h2">Nejdřív se podíváme na váš prostor. Až potom navrhujeme.</h2>
           <p className="lead">{t.homeCtaNote}</p>
           <div style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
@@ -468,8 +466,7 @@ function Process({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <span className="eyebrow"><span className="script">Za výsledkem</span></span>
-            <h2 className="display h2">{t.processBehindH}</h2>
+          
           </div>
           <div className="process-cards">
             {(t.processBehindCards || []).map((card) => (
@@ -501,7 +498,7 @@ function Pricing({ t, openPricing }) {
       <section className="section">
         <div className="shell">
           <div className="section-header reveal">
-            <span className="eyebrow"><span className="script">Orientační scénáře</span></span>
+
             <h2 className="display h2">Cena se odvíjí od prostoru, materiálu i detailu provedení</h2>
             <p className="lead">{(t.pricingIntro || []).join(" ")}</p>
           </div>
@@ -540,7 +537,7 @@ function Gallery({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <span className="eyebrow"><span className="script">{t.galleryOurWorkH}</span></span>
+          
             <h2 className="display h2">Realizace, ve kterých stínění nepůsobí navíc. Působí správně.</h2>
           </div>
           <div className="gallery-grid reveal">
@@ -556,7 +553,7 @@ function Gallery({ t }) {
       <section className="section">
         <div className="shell">
           <div className="section-header reveal">
-            <span className="eyebrow"><span className="script">{t.galleryPartnersH}</span></span>
+            
             <h2 className="display h2">Spolupráce s architekty a designéry</h2>
             <p className="lead">{t.galleryPartnersP}</p>
           </div>
@@ -587,7 +584,7 @@ function Essence({ t }) {
       <section className="section">
         <div className="shell">
           <div className="essence-box reveal">
-            <span className="eyebrow"><span className="script">V přípravě</span></span>
+          
             <h2 className="display h2">{t.essenceBoxH}</h2>
             <div className="script">{t.essenceBoxFoot}</div>
             <p>{t.essenceBoxP}</p>
