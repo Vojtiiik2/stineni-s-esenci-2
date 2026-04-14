@@ -399,8 +399,7 @@ function Home({ t }) {
 <div className="gallery-grid reveal">
   {featuredWorks.map((item, index) => (
     <button
-  
-      className={`gallery-item ${item.type}`}
+      className="gallery-item"
       key={item.src}
       onClick={() => openGalleryLightbox(index, featuredWorks.map((w) => w.src))}
     >
