@@ -388,17 +388,27 @@ function Home({ t }) {
             </p>
           </div>
 
-          <div className="gallery-grid reveal">
-            {OUR_WORK.slice(0, 6).map((src, index) => (
-              <button
-                className="gallery-item"
-                key={src}
-                onClick={() => openGalleryLightbox(index, OUR_WORK.slice(0, 6))}
-              >
-                <img src={src} alt={`Realizace ${index + 1}`} />
-              </button>
-            ))}
-          </div>
+         const featuredWorks = [
+  { src: OUR_WORK[0], type: "portrait" },
+  { src: OUR_WORK[1], type: "portrait" },
+  { src: OUR_WORK[2], type: "landscape" },
+  { src: OUR_WORK[3], type: "landscape" },
+  { src: OUR_WORK[4], type: "portrait" },
+  { src: OUR_WORK[5], type: "portrait" },
+];
+
+<div className="gallery-grid reveal">
+  {featuredWorks.map((item, index) => (
+    <button
+  
+      className={`gallery-item ${item.type}`}
+      key={item.src}
+      onClick={() => openGalleryLightbox(index, featuredWorks.map((w) => w.src))}
+    >
+      <img src={item.src} alt={`Realizace ${index + 1}`} />
+    </button>
+  ))}
+</div>
 
           <div style={{ marginTop: 24 }} className="reveal">
             <button className="button button-secondary" onClick={() => go("/gallery")}>
@@ -525,19 +535,37 @@ function Pricing({ t, openPricing }) {
 }
 
 function Gallery({ t }) {
+  const galleryItems = OUR_WORK.map((src, index) => ({
+    src,
+    type: [0, 1, 4, 5].includes(index % 6) ? "portrait" : "landscape",
+  }));
+
   return (
     <>
-      <Hero t={t} small image="assets/img/hero/gallery-hero.webp" title={t.galleryH} lead={t.galleryOurWorkP} />
+      <Hero
+        t={t}
+        small
+        image="assets/img/hero/gallery-hero.webp"
+        title={t.galleryH}
+        lead={t.galleryOurWorkP}
+      />
+
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-          
-            <h2 className="display h2">Realizace, ve kterých stínění nepůsobí navíc. Působí správně.</h2>
+            <h2 className="display h2">
+              Realizace, ve kterých stínění nepůsobí navíc. Působí správně.
+            </h2>
           </div>
+
           <div className="gallery-grid reveal">
-            {OUR_WORK.map((src, index) => (
-              <button className="gallery-item" key={src} onClick={() => openGalleryLightbox(index, OUR_WORK)}>
-                <img src={src} alt={`Realizace ${index + 1}`} />
+            {galleryItems.map((item, index) => (
+              <button
+                className={`gallery-item ${item.type}`}
+                key={item.src}
+                onClick={() => openGalleryLightbox(index, galleryItems.map((g) => g.src))}
+              >
+                <img src={item.src} alt={`Realizace ${index + 1}`} />
               </button>
             ))}
           </div>
@@ -547,10 +575,10 @@ function Gallery({ t }) {
       <section className="section">
         <div className="shell">
           <div className="section-header reveal">
-            
             <h2 className="display h2">Spolupráce s architekty a designéry</h2>
             <p className="lead">{t.galleryPartnersP}</p>
           </div>
+
           <div className="partner-grid">
             {PARTNERS.map((partner) => (
               <article className="card partner-card reveal" key={partner.key}>
@@ -561,7 +589,9 @@ function Gallery({ t }) {
                     <img src={src} alt={`${partner.name} ${idx + 1}`} key={src} />
                   ))}
                 </div>
-                <a className="partner-link" href={partner.url} target="_blank" rel="noreferrer">{t.galleryVisitWeb}</a>
+                <a className="partner-link" href={partner.url} target="_blank" rel="noreferrer">
+                  {t.galleryVisitWeb}
+                </a>
               </article>
             ))}
           </div>
@@ -570,7 +600,6 @@ function Gallery({ t }) {
     </>
   );
 }
-
 function Essence({ t }) {
   return (
     <>
