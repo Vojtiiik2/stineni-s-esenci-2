@@ -285,6 +285,7 @@ function Home({ t }) {
     <>
       <Hero t={t} />
       <TrustBand t={t} />
+    
           <div className="feature-copy reveal">
             <h2 className="display h2">{t.homeAboutH}</h2>
             <p className="copy">{t.homeAbout}</p>
@@ -295,7 +296,6 @@ function Home({ t }) {
             <div style={{ marginTop: 24, display: "flex", gap: 14, flexWrap: "wrap" }}>
               <button className="button button-primary" onClick={() => go("/process")}>{t.processH}</button>
               <button className="button button-secondary" onClick={() => go("/pricing")}>{t.priceH}</button>
-            </div>
           </div>
         </div>
       </section>
