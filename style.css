@@ -375,19 +375,17 @@ body.menu-open,body.modal-open{overflow:hidden}
   padding:0;
 }
 
-/* obě zabírají jen 1 sloupec */
 .gallery-item.portrait,
 .gallery-item.landscape{
   grid-column:span 1;
 }
 
-/* jemný rozdíl ve výšce místo span 2 */
 .gallery-item.portrait{
-  aspect-ratio: 4 / 5;
+  aspect-ratio:4 / 5;
 }
 
 .gallery-item.landscape{
-  aspect-ratio: 5 / 4;
+  aspect-ratio:5 / 4;
 }
 
 .gallery-item img{
@@ -610,14 +608,14 @@ body.menu-open,body.modal-open{overflow:hidden}
   .step-card.reverse .step-media,.step-card.reverse .step-content{order:initial}
   .step-media{min-height:260px}
 
-.gallery-grid{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-}
+  .gallery-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
 
-.gallery-item.portrait,
-.gallery-item.landscape{
-  grid-column:span 1;
-}
+  .gallery-item.portrait,
+  .gallery-item.landscape{
+    grid-column:span 1;
+  }
 
   .gallery-grid-home{
     grid-template-columns:repeat(2,minmax(0,1fr));
@@ -646,15 +644,16 @@ body.menu-open,body.modal-open{overflow:hidden}
   .hero-actions{flex-direction:column;align-items:stretch}
   .trust-grid,.ribbon-stack{grid-template-columns:1fr}
 
- .gallery-grid{
-  grid-template-columns:1fr;
-}
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
 
-.gallery-item.portrait,
-.gallery-item.landscape{
-  grid-column:span 1;
-  aspect-ratio:4 / 5;
-}
+  .gallery-item.portrait,
+  .gallery-item.landscape{
+    grid-column:span 1;
+    aspect-ratio:4 / 5;
+  }
+
   .gallery-grid-home{
     grid-template-columns:1fr;
   }
