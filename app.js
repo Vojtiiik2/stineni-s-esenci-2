@@ -20,7 +20,7 @@ const HOME_SERVICE_IMAGES = [
   "assets/img/pricing/pricing-02.webp",
   "assets/img/pricing/roleta-rimska.webp",
   "assets/img/pricing/systemy-kolejnice.webp",
-  "assets/img/Onas/onas-01.webp",
+   "assets/img/pricing/pricing-05.webp",
 ];
 
 const ATMOS_IMAGES = [
