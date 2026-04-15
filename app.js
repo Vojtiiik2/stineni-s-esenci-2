@@ -326,32 +326,52 @@ const featuredWorks = [
         </div>
       </section>
 
-      <section className="section section-tight">
-        <div className="shell">
-          <div className="section-header reveal">
-            <h2 className="display h2">Řešení, která drží atmosféru i funkci</h2>
-            <p className="lead">
-              Každá vrstva má svoji roli. Působení prostoru stojí na detailu, ne na množství prvků.
-            </p>
-          </div>
+    <section className="section section-tight">
+  <div className="shell">
+    <div className="section-header reveal">
+      <h2 className="display h2">Řešení, která drží atmosféru i funkci</h2>
+      <p className="lead">
+        Každá vrstva má svoji roli. Působení prostoru stojí na detailu, ne na množství prvků.
+      </p>
+    </div>
 
-          <div className="grid-3">
-            {(t.services || []).map((service, index) => (
-              <article className="card service-card reveal" key={service.name}>
-                <div className="service-card-top">
-                  <h3>{service.name}</h3>
-                  <p>{service.note}</p>
-                </div>
-                <div className="service-card-media">
-                  <img src={HOME_SERVICE_IMAGES[index] || HOME_SERVICE_IMAGES[0]} alt={service.name} />
-                </div>
-                <div className="service-card-foot">{t.serviceCardCta}</div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="grid-3">
+      {(t.services || []).map((service, index) => {
 
+        // 👉 mapování služby na anchor (můžeš upravit podle sebe)
+        const anchors = ["curtains", "drapes", "blinds", "systems", "service"];
+        const target = anchors[index] || "pricing";
+
+        return (
+          <article
+            className="card service-card reveal"
+            key={service.name}
+            onClick={() => go(`/pricing#${target}`)}
+            style={{ cursor: "pointer" }}
+          >
+            <div className="service-card-top">
+              <h3>{service.name}</h3>
+              <p>{service.note}</p>
+            </div>
+
+            <div className="service-card-media">
+              <img
+                src={HOME_SERVICE_IMAGES[index] || HOME_SERVICE_IMAGES[0]}
+                alt={service.name}
+                loading="lazy"
+              />
+            </div>
+
+            <div className="service-card-foot">
+              {t.serviceCardCta}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>
+      
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
@@ -498,33 +518,66 @@ function Process({ t }) {
 function Pricing({ t, openPricing }) {
   return (
     <>
-      <Hero t={t} small image="assets/img/hero/pricing-hero.webp" title={t.priceH} lead="Orientační ceny a typy řešení pro představu ještě před konzultací." />
+      <Hero
+        t={t}
+        small
+        image="assets/img/hero/pricing-hero.webp"
+        title={t.priceH}
+        lead="Orientační ceny a typy řešení pro představu ještě před konzultací."
+      />
+
       <section className="section">
         <div className="shell">
           <div className="section-header reveal">
-
             <h2 className="display h2">Cena se odvíjí od prostoru, materiálu i detailu provedení</h2>
             <p className="lead">{(t.pricingIntro || []).join(" ")}</p>
           </div>
+
           <div className="pricing-grid">
             {(t.pricingItems || []).map((item) => (
-              <article className="card price-card reveal" key={item.key}>
-                <div className="price-media"><img src={item.img} alt={item.title} /></div>
+              <article
+                id={item.key}
+                className="card price-card reveal"
+                key={item.key}
+              >
+                <div
+                  className="price-media"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => openPricing(item)}
+                >
+                  <img src={item.img} alt={item.title} />
+                </div>
+
                 <div className="price-body">
                   <div className="price-topline">{item.micro}</div>
+
                   <div className="price-title">
                     <h3>{item.title}</h3>
                     <span className="script">{item.vibe}</span>
                   </div>
+
                   <p>{item.intro}</p>
+
                   <div className="price-actions">
-                    <button className="button button-secondary" onClick={() => openPricing(item)}>{t.openDetail}</button>
-                    <button className="button button-primary" onClick={() => go("/contact")}>{t.writeMe}</button>
+                    <button
+                      className="button button-secondary"
+                      onClick={() => openPricing(item)}
+                    >
+                      {t.openDetail}
+                    </button>
+
+                    <button
+                      className="button button-primary"
+                      onClick={() => go("/contact")}
+                    >
+                      {t.writeMe}
+                    </button>
                   </div>
                 </div>
               </article>
             ))}
           </div>
+
           <div className="card card-inner reveal" style={{ marginTop: 22 }}>
             <p className="lead">{t.pricingDisclaimer}</p>
           </div>
