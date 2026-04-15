@@ -557,7 +557,7 @@ function Gallery({ t }) {
 
       <section className="section section-tight">
         <div className="shell">
-          <div className="section-header reveal">
+          <div className="section-header reveal visible">
             <h2 className="display h2">
               Realizace, ve kterých stínění nepůsobí navíc. Působí správně.
             </h2>
@@ -566,12 +566,12 @@ function Gallery({ t }) {
             </p>
           </div>
 
-          <div className="ow-rows reveal">
+          <div className="ow-rows reveal visible">
             {chunk(OUR_WORK, perRow).map((row, rIdx) => (
               <div className="ow-row-page" key={rIdx}>
                 {row.map((src, i) => {
                   const absoluteIndex = rIdx * perRow + i;
-                  const grow = ratios[absoluteIndex] || 1.4;
+                  const grow = ratios[absoluteIndex] || 1.6;
 
                   return (
                     <button
@@ -611,14 +611,14 @@ function Gallery({ t }) {
 
       <section className="section">
         <div className="shell">
-          <div className="section-header reveal">
+          <div className="section-header reveal visible">
             <h2 className="display h2">Spolupráce s architekty a designéry</h2>
             <p className="lead">{t.galleryPartnersP}</p>
           </div>
 
           <div className="partner-grid">
             {PARTNERS.map((partner) => (
-              <article className="card partner-card reveal" key={partner.key}>
+              <article className="card partner-card reveal visible" key={partner.key}>
                 <h3>{partner.name}</h3>
                 <p>{(t.galleryPartnersNotes || {})[partner.key]}</p>
 
