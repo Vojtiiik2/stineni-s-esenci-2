@@ -326,7 +326,7 @@ const featuredWorks = [
         </div>
       </section>
 
-    <section className="section section-tight">
+   <section className="section section-tight">
   <div className="shell">
     <div className="section-header reveal">
       <h2 className="display h2">Řešení, která drží atmosféru i funkci</h2>
@@ -337,16 +337,17 @@ const featuredWorks = [
 
     <div className="grid-3">
       {(t.services || []).map((service, index) => {
-
-        // 👉 mapování služby na anchor (můžeš upravit podle sebe)
-        const anchors = ["curtains", "drapes", "blinds", "systems", "service"];
-        const target = anchors[index] || "pricing";
+        const serviceKeys = ["curtains", "drapes", "blinds", "systems", "service"];
+        const targetKey = serviceKeys[index] || "curtains";
 
         return (
           <article
             className="card service-card reveal"
             key={service.name}
-            onClick={() => go(`/pricing#${target}`)}
+            onClick={() => {
+              localStorage.setItem("openPricingKey", targetKey);
+              go("/pricing");
+            }}
             style={{ cursor: "pointer" }}
           >
             <div className="service-card-top">
@@ -358,112 +359,16 @@ const featuredWorks = [
               <img
                 src={HOME_SERVICE_IMAGES[index] || HOME_SERVICE_IMAGES[0]}
                 alt={service.name}
-                loading="lazy"
               />
             </div>
 
-            <div className="service-card-foot">
-              {t.serviceCardCta}
-            </div>
+            <div className="service-card-foot">{t.serviceCardCta}</div>
           </article>
         );
       })}
     </div>
   </div>
 </section>
-      
-      <section className="section section-tight">
-        <div className="shell">
-          <div className="section-header reveal">
-            <h2 className="display h2">Interiér se nemění jen vzhledem. Mění se pocitem.</h2>
-            <p className="lead">{t.inspLead}</p>
-          </div>
-
-          <div className="atmos-grid">
-            {ATMOS_IMAGES.map((src, index) => (
-              <figure className="atmos-card reveal" key={src}>
-                <img src={src} alt={`Atmosféra interiéru ${index + 1}`} />
-                <figcaption>{(t.inspTags || [])[index]}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-tight">
-        <div className="shell">
-          <div className="section-header reveal">
-            <h2 className="display h2">Luxusní pocit nevzniká okázalostí. Vzniká jistotou.</h2>
-          </div>
-
-          <div className="grid-3">
-            {(t.benefits || []).map((item) => (
-              <article className="card benefit-card reveal" key={item.name}>
-                <div className="script">Detail</div>
-                <h3>{item.name}</h3>
-                <p>{item.note}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-tight">
-        <div className="shell">
-          <div className="section-header reveal">
-            <h2 className="display h2">Hotové realizace</h2>
-            <p className="lead">
-              Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.
-            </p>
-          </div>
-
-<div className="gallery-grid reveal gallery-grid-home">
-  {featuredWorks.map((item, index) => (
-    <button
-      className="gallery-item gallery-item-home"
-      key={item.src}
-      style={{ gridColumn: item.cols }}
-      onClick={() => openGalleryLightbox(index, featuredWorks.map((w) => w.src))}
-    >
-      <img src={item.src} alt={`Realizace ${index + 1}`} />
-    </button>
-  ))}
-</div>
-
-          <div style={{ marginTop: 24 }} className="reveal">
-            <button className="button button-secondary" onClick={() => go("/gallery")}>
-              {t.galleryShowAll}
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-tight">
-        <div className="shell">
-          <div className="section-header reveal">
-            <h2 className="display h2">To podstatné, co chce klient vědět předem</h2>
-          </div>
-          <Faq items={t.faq || []} />
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="shell accent-surface card card-inner reveal">
-          <h2 className="display h2">Nejdřív se podíváme na váš prostor. Až potom navrhujeme.</h2>
-          <p className="lead">{t.homeCtaNote}</p>
-          <div style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
-            <button className="button button-primary" onClick={() => go("/contact")}>
-              {t.cta}
-            </button>
-            <button className="button button-secondary" onClick={() => go("/process")}>
-              {t.processH}
-            </button>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
 
 function Process({ t }) {
   return (
@@ -516,6 +421,27 @@ function Process({ t }) {
 }
 
 function Pricing({ t, openPricing }) {
+  React.useEffect(() => {
+    const pendingKey = localStorage.getItem("openPricingKey");
+    if (!pendingKey) return;
+
+    const items = t.pricingItems || [];
+    const targetItem = items.find((item) => item.key === pendingKey);
+
+    if (targetItem) {
+      openPricing(targetItem);
+
+      requestAnimationFrame(() => {
+        const el = document.getElementById(pendingKey);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    }
+
+    localStorage.removeItem("openPricingKey");
+  }, [t, openPricing]);
+
   return (
     <>
       <Hero
