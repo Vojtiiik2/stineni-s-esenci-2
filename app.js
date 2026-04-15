@@ -369,6 +369,9 @@ const featuredWorks = [
     </div>
   </div>
 </section>
+    </>
+  );
+}
 
 function Process({ t }) {
   return (
