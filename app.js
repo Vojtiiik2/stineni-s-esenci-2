@@ -535,10 +535,100 @@ function Pricing({ t, openPricing }) {
 }
 
 function Gallery({ t }) {
-  const galleryItems = OUR_WORK.map((src, index) => ({
-    src,
-    type: [1, 2, 4, 5].includes(index % 6) ? "landscape" : "portrait",
-  }));
+const galleryTypes = [
+  "portrait",  // 1
+  "landscape", // 2
+  "landscape", // 3
+  "landscape", // 4
+  "landscape", // 5
+  "portrait",  // 6
+  "portrait",  // 7
+  "landscape", // 8
+  "landscape", // 9
+  "portrait",  // 10
+  "landscape", // 11
+  "landscape", // 12
+  "portrait",  // 13
+  "portrait",  // 14
+  "landscape", // 15
+  "landscape", // 16
+  "portrait",  // 17
+  "landscape", // 18
+  "landscape", // 19
+  "portrait",  // 20
+  "landscape", // 21
+  "landscape", // 22
+  "portrait",  // 23
+  "portrait",  // 24
+  "landscape", // 25
+  "landscape", // 26
+  "portrait",  // 27
+  "landscape", // 28
+  "landscape", // 29
+  "portrait",  // 30
+  "portrait",  // 31
+  "landscape", // 32
+  "landscape", // 33
+  "portrait",  // 34
+  "landscape", // 35
+  "portrait",  // 36
+  "landscape", // 37
+  "landscape", // 38
+  "portrait",  // 39
+  "landscape", // 40
+  "landscape", // 41
+  "landscape", // 42
+  "portrait",  // 43
+  "portrait",  // 44
+  "landscape", // 45
+  "landscape", // 46
+  "landscape", // 47
+  "portrait",  // 48
+  "portrait",  // 49
+  "landscape", // 50
+  "landscape", // 51
+  "landscape", // 52
+  "portrait",  // 53
+  "portrait",  // 54
+  "landscape", // 55
+  "landscape", // 56
+  "landscape", // 57
+  "landscape", // 58
+  "portrait",  // 59
+  "portrait",  // 60
+  "landscape", // 61
+  "portrait",  // 62
+  "landscape", // 63
+  "portrait",  // 64
+  "landscape", // 65
+  "portrait",  // 66
+  "portrait",  // 67
+  "landscape", // 68
+  "portrait",  // 69
+  "portrait",  // 70
+  "landscape", // 71
+  "portrait",  // 72
+  "landscape", // 73
+  "portrait",  // 74
+  "landscape", // 75
+  "portrait",  // 76
+  "landscape", // 77
+  "landscape", // 78
+  "landscape", // 79
+  "landscape", // 80
+  "landscape", // 81
+  "portrait",  // 82
+  "portrait",  // 83
+  "landscape", // 84
+  "portrait",  // 85
+  "landscape", // 86
+  "landscape"  // 87
+];
+
+const galleryItems = OUR_WORK.map((src, index) => ({
+  src,
+  type: galleryTypes[index] || "portrait",
+}));
 
   return (
     <>
