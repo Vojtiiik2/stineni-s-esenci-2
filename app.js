@@ -326,7 +326,7 @@ const featuredWorks = [
         </div>
       </section>
 
-   <section className="section section-tight">
+ <section className="section section-tight">
   <div className="shell">
     <div className="section-header reveal">
       <h2 className="display h2">Řešení, která drží atmosféru i funkci</h2>
@@ -432,13 +432,8 @@ function Pricing({ t, openPricing }) {
     const targetItem = items.find((item) => item.key === pendingKey);
 
     if (targetItem) {
-      openPricing(targetItem);
-
       requestAnimationFrame(() => {
-        const el = document.getElementById(pendingKey);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+        openPricing(targetItem);
       });
     }
 
@@ -492,7 +487,7 @@ function Pricing({ t, openPricing }) {
                       className="button button-secondary"
                       onClick={() => openPricing(item)}
                     >
-                      {t.openDetail}
+                      Zobrazit orientační ceny
                     </button>
 
                     <button
