@@ -535,100 +535,27 @@ function Pricing({ t, openPricing }) {
 }
 
 function Gallery({ t }) {
-const galleryTypes = [
-  "portrait",  // 1
-  "landscape", // 2
-  "landscape", // 3
-  "landscape", // 4
-  "landscape", // 5
-  "portrait",  // 6
-  "portrait",  // 7
-  "landscape", // 8
-  "landscape", // 9
-  "portrait",  // 10
-  "landscape", // 11
-  "landscape", // 12
-  "portrait",  // 13
-  "portrait",  // 14
-  "landscape", // 15
-  "landscape", // 16
-  "portrait",  // 17
-  "landscape", // 18
-  "landscape", // 19
-  "portrait",  // 20
-  "landscape", // 21
-  "landscape", // 22
-  "portrait",  // 23
-  "portrait",  // 24
-  "landscape", // 25
-  "landscape", // 26
-  "portrait",  // 27
-  "landscape", // 28
-  "landscape", // 29
-  "portrait",  // 30
-  "portrait",  // 31
-  "landscape", // 32
-  "landscape", // 33
-  "portrait",  // 34
-  "landscape", // 35
-  "portrait",  // 36
-  "landscape", // 37
-  "landscape", // 38
-  "portrait",  // 39
-  "landscape", // 40
-  "landscape", // 41
-  "landscape", // 42
-  "portrait",  // 43
-  "portrait",  // 44
-  "landscape", // 45
-  "landscape", // 46
-  "landscape", // 47
-  "portrait",  // 48
-  "portrait",  // 49
-  "landscape", // 50
-  "landscape", // 51
-  "landscape", // 52
-  "portrait",  // 53
-  "portrait",  // 54
-  "landscape", // 55
-  "landscape", // 56
-  "landscape", // 57
-  "landscape", // 58
-  "portrait",  // 59
-  "portrait",  // 60
-  "landscape", // 61
-  "portrait",  // 62
-  "landscape", // 63
-  "portrait",  // 64
-  "landscape", // 65
-  "portrait",  // 66
-  "portrait",  // 67
-  "landscape", // 68
-  "portrait",  // 69
-  "portrait",  // 70
-  "landscape", // 71
-  "portrait",  // 72
-  "landscape", // 73
-  "portrait",  // 74
-  "landscape", // 75
-  "portrait",  // 76
-  "landscape", // 77
-  "landscape", // 78
-  "landscape", // 79
-  "landscape", // 80
-  "landscape", // 81
-  "portrait",  // 82
-  "portrait",  // 83
-  "landscape", // 84
-  "portrait",  // 85
-  "landscape", // 86
-  "landscape"  // 87
-];
+  const [ratios, setRatios] = React.useState({});
+  const [perRow, setPerRow] = React.useState(
+    typeof window !== "undefined" && window.innerWidth <= 768 ? 2 : 3
+  );
 
-const galleryItems = OUR_WORK.map((src, index) => ({
-  src,
-  type: galleryTypes[index] || "portrait",
-}));
+  React.useEffect(() => {
+    const onResize = () => {
+      setPerRow(window.innerWidth <= 768 ? 2 : 3);
+    };
+
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const chunk = (arr, size) => {
+    const out = [];
+    for (let i = 0; i < arr.length; i += size) {
+      out.push(arr.slice(i, i + size));
+    }
+    return out;
+  };
 
   return (
     <>
@@ -643,18 +570,44 @@ const galleryItems = OUR_WORK.map((src, index) => ({
             </p>
           </div>
 
-          <div className="gallery-grid reveal visible">
-            {galleryItems.map((item, index) => (
-              <button
-                type="button"
-                className={`gallery-item ${item.type}`}
-                key={item.src}
-                onClick={() =>
-                  openGalleryLightbox(index, galleryItems.map((g) => g.src))
-                }
-              >
-                <img src={item.src} alt={`Realizace ${index + 1}`} />
-              </button>
+          <div className="ow-rows reveal visible">
+            {chunk(OUR_WORK, perRow).map((row, rIdx) => (
+              <div className="ow-row-page" key={rIdx}>
+                {row.map((src, i) => {
+                  const absoluteIndex = rIdx * perRow + i;
+                  const grow = ratios[absoluteIndex] || 1.4;
+
+                  return (
+                    <button
+                      type="button"
+                      key={src}
+                      className="ow-card-page"
+                      style={{ flexGrow: grow }}
+                      onClick={() => openGalleryLightbox(absoluteIndex, OUR_WORK)}
+                    >
+                      <img
+                        src={src}
+                        alt={`Realizace ${absoluteIndex + 1}`}
+                        className="ow-img-page"
+                        loading="lazy"
+                        decoding="async"
+                        onLoad={(e) => {
+                          const img = e.currentTarget;
+                          const w = img.naturalWidth || 1;
+                          const h = img.naturalHeight || 1;
+                          const ratio = Math.max(0.7, Math.min(3.2, w / h));
+
+                          setRatios((prev) =>
+                            prev[absoluteIndex]
+                              ? prev
+                              : { ...prev, [absoluteIndex]: ratio }
+                          );
+                        }}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
             ))}
           </div>
         </div>
