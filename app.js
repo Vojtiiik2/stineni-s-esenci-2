@@ -336,23 +336,23 @@ function Home({ t }) {
             </p>
           </div>
 
-          <div className="grid-3">
-            {(t.services || []).map((service, index) => {
-              return (
-                <article
-                  className="card service-card reveal"
-                  key={service.name}
-                  onClick={() => {
-                    localStorage.setItem("openPricingIndex", String(index));
-                    go("/pricing");
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  <div className="service-card-top">
-                    <h3>{service.name}</h3>
-                    <p>{service.note}</p>
-                  </div>
-
+         <div className="grid-3">
+  {(t.benefits || []).map((item) => (
+    <article
+      className="card benefit-card reveal"
+      key={item.name}
+      onClick={() => {
+        localStorage.setItem("openProcessSection", "behind");
+        go("/process");
+      }}
+      style={{ cursor: "pointer" }}
+    >
+      <div className="script">Detail</div>
+      <h3>{item.name}</h3>
+      <p>{item.note}</p>
+    </article>
+  ))}
+</div>
                   <div className="service-card-media">
                     <img
                       src={HOME_SERVICE_IMAGES[index] || HOME_SERVICE_IMAGES[0]}
@@ -462,9 +462,30 @@ function Home({ t }) {
   );
 }
 function Process({ t }) {
+  React.useEffect(() => {
+    const target = localStorage.getItem("openProcessSection");
+    if (target !== "behind") return;
+
+    requestAnimationFrame(() => {
+      const el = document.getElementById("process-behind");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
+    localStorage.removeItem("openProcessSection");
+  }, []);
+
   return (
     <>
-      <Hero t={t} small image="assets/img/hero/process-hero-v2.webp" title={t.processH} lead="Od prvního zaměření po finální dekorování. Každý krok má svoje tempo, důvod i přesnost." />
+      <Hero
+        t={t}
+        small
+        image="assets/img/hero/process-hero-v2.webp"
+        title={t.processH}
+        lead="Od prvního zaměření po finální dekorování. Každý krok má svoje tempo, důvod i přesnost."
+      />
+
       <section className="section">
         <div className="shell steps">
           {(t.steps || []).map((step, index) => (
@@ -475,7 +496,9 @@ function Process({ t }) {
               <div className="step-content">
                 <div className="step-index">0{index + 1} / 04</div>
                 <h3>{step}</h3>
-                <div className="script">{(t.processBridges || [])[index] || (t.processMicroByStep || [])[index]}</div>
+                <div className="script">
+                  {(t.processBridges || [])[index] || (t.processMicroByStep || [])[index]}
+                </div>
                 <p>{(t.stepsTxt || [])[index]}</p>
               </div>
             </article>
@@ -483,11 +506,10 @@ function Process({ t }) {
         </div>
       </section>
 
-      <section className="section section-tight">
+      <section className="section section-tight" id="process-behind">
         <div className="shell">
-          <div className="section-header reveal">
-          
-          </div>
+          <div className="section-header reveal"></div>
+
           <div className="process-cards">
             {(t.processBehindCards || []).map((card) => (
               <article className="card process-card reveal" key={card.id}>
@@ -498,12 +520,15 @@ function Process({ t }) {
               </article>
             ))}
           </div>
+
           <div className="quote-panel reveal" style={{ marginTop: 22 }}>
             <div>
               <span className="script">Výsledek má být přirozený</span>
               <p>{t.processEnding}</p>
             </div>
-            <button className="button button-ghost" onClick={() => go("/contact")}>{t.writeMe}</button>
+            <button className="button button-ghost" onClick={() => go("/contact")}>
+              {t.writeMe}
+            </button>
           </div>
         </div>
       </section>
