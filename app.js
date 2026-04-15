@@ -547,9 +547,17 @@ function Gallery({ t }) {
 
   return (
     <>
+      <Hero
+        t={t}
+        small
+        image="assets/img/hero/gallery-hero.webp"
+        title={t.galleryH}
+        lead="Výběr realizací záclon, závěsů, rolet a technických systémů."
+      />
+
       <section className="section section-tight">
         <div className="shell">
-          <div className="section-header reveal visible">
+          <div className="section-header reveal">
             <h2 className="display h2">
               Realizace, ve kterých stínění nepůsobí navíc. Působí správně.
             </h2>
@@ -558,7 +566,7 @@ function Gallery({ t }) {
             </p>
           </div>
 
-          <div className="ow-rows reveal visible">
+          <div className="ow-rows reveal">
             {chunk(OUR_WORK, perRow).map((row, rIdx) => (
               <div className="ow-row-page" key={rIdx}>
                 {row.map((src, i) => {
@@ -603,14 +611,14 @@ function Gallery({ t }) {
 
       <section className="section">
         <div className="shell">
-          <div className="section-header reveal visible">
+          <div className="section-header reveal">
             <h2 className="display h2">Spolupráce s architekty a designéry</h2>
             <p className="lead">{t.galleryPartnersP}</p>
           </div>
 
           <div className="partner-grid">
             {PARTNERS.map((partner) => (
-              <article className="card partner-card reveal visible" key={partner.key}>
+              <article className="card partner-card reveal" key={partner.key}>
                 <h3>{partner.name}</h3>
                 <p>{(t.galleryPartnersNotes || {})[partner.key]}</p>
 
