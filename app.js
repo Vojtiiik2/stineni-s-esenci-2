@@ -335,21 +335,18 @@ const featuredWorks = [
       </p>
     </div>
 
-    <div className="grid-3">
-      {(t.services || []).map((service, index) => {
-        const serviceKeys = ["curtains", "drapes", "blinds", "systems", "service"];
-        const targetKey = serviceKeys[index] || "curtains";
-
-        return (
-          <article
-            className="card service-card reveal"
-            key={service.name}
-            onClick={() => {
-              localStorage.setItem("openPricingKey", targetKey);
-              go("/pricing");
-            }}
-            style={{ cursor: "pointer" }}
-          >
+   <div className="grid-3">
+  {(t.services || []).map((service, index) => {
+    return (
+      <article
+        className="card service-card reveal"
+        key={service.name}
+        onClick={() => {
+          localStorage.setItem("openPricingIndex", String(index));
+          go("/pricing");
+        }}
+        style={{ cursor: "pointer" }}
+      >
             <div className="service-card-top">
               <h3>{service.name}</h3>
               <p>{service.note}</p>
@@ -425,11 +422,23 @@ function Process({ t }) {
 
 function Pricing({ t, openPricing }) {
   React.useEffect(() => {
-    const pendingKey = localStorage.getItem("openPricingKey");
-    if (!pendingKey) return;
-
     const items = t.pricingItems || [];
-    const targetItem = items.find((item) => item.key === pendingKey);
+
+    const pendingIndexRaw = localStorage.getItem("openPricingIndex");
+    const pendingKey = localStorage.getItem("openPricingKey");
+
+    let targetItem = null;
+
+    if (pendingIndexRaw !== null) {
+      const pendingIndex = Number(pendingIndexRaw);
+      if (!Number.isNaN(pendingIndex) && items[pendingIndex]) {
+        targetItem = items[pendingIndex];
+      }
+    }
+
+    if (!targetItem && pendingKey) {
+      targetItem = items.find((item) => item.key === pendingKey) || null;
+    }
 
     if (targetItem) {
       requestAnimationFrame(() => {
@@ -437,6 +446,7 @@ function Pricing({ t, openPricing }) {
       });
     }
 
+    localStorage.removeItem("openPricingIndex");
     localStorage.removeItem("openPricingKey");
   }, [t, openPricing]);
 
@@ -453,7 +463,9 @@ function Pricing({ t, openPricing }) {
       <section className="section">
         <div className="shell">
           <div className="section-header reveal">
-            <h2 className="display h2">Cena se odvíjí od prostoru, materiálu i detailu provedení</h2>
+            <h2 className="display h2">
+              Cena se odvíjí od prostoru, materiálu i detailu provedení
+            </h2>
             <p className="lead">{(t.pricingIntro || []).join(" ")}</p>
           </div>
 
