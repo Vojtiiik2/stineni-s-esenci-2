@@ -512,7 +512,6 @@ function Pricing({ t, openPricing }) {
     </>
   );
 }
-
 function Gallery({ t }) {
   const [ratios, setRatios] = React.useState({});
   const [perRow, setPerRow] = React.useState(
