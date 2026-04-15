@@ -336,35 +336,35 @@ function Home({ t }) {
             </p>
           </div>
 
-         <div className="grid-3">
-  {(t.benefits || []).map((item) => (
+        <div className="grid-3">
+  {(t.services || []).map((service, index) => (
     <article
-      className="card benefit-card reveal"
-      key={item.name}
+      className="card service-card reveal"
+      key={service.name}
       onClick={() => {
-        localStorage.setItem("openProcessSection", "behind");
-        go("/process");
+        localStorage.setItem("openPricingIndex", String(index));
+        go("/pricing");
       }}
       style={{ cursor: "pointer" }}
     >
-      <div className="script">Detail</div>
-      <h3>{item.name}</h3>
-      <p>{item.note}</p>
+      <div className="service-card-top">
+        <h3>{service.name}</h3>
+        <p>{service.note}</p>
+      </div>
+
+      <div className="service-card-media">
+        <img
+          src={HOME_SERVICE_IMAGES[index] || HOME_SERVICE_IMAGES[0]}
+          alt={service.name}
+        />
+      </div>
+
+      <div className="service-card-foot">{t.serviceCardCta}</div>
     </article>
   ))}
 </div>
-                  <div className="service-card-media">
-                    <img
-                      src={HOME_SERVICE_IMAGES[index] || HOME_SERVICE_IMAGES[0]}
-                      alt={service.name}
-                    />
-                  </div>
-
-                  <div className="service-card-foot">{t.serviceCardCta}</div>
-                </article>
-              );
-            })}
-          </div>
+</div>
+               
         </div>
       </section>
 
@@ -392,17 +392,23 @@ function Home({ t }) {
             <h2 className="display h2">Luxusní pocit nevzniká okázalostí. Vzniká jistotou.</h2>
           </div>
 
-          <div className="grid-3">
-            {(t.benefits || []).map((item) => (
-              <article className="card benefit-card reveal" key={item.name}>
-                <div className="script">Detail</div>
-                <h3>{item.name}</h3>
-                <p>{item.note}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+         <div className="grid-3">
+  {(t.benefits || []).map((item) => (
+    <article
+      className="card benefit-card reveal"
+      key={item.name}
+      onClick={() => {
+        localStorage.setItem("openProcessSection", "behind");
+        go("/process");
+      }}
+      style={{ cursor: "pointer" }}
+    >
+      <div className="script">Detail</div>
+      <h3>{item.name}</h3>
+      <p>{item.note}</p>
+    </article>
+  ))}
+</div>
 
       <section className="section section-tight">
         <div className="shell">
