@@ -363,9 +363,7 @@ function Home({ t }) {
     </article>
   ))}
 </div>
-</div>
-               
-        </div>
+
       </section>
 
       <section className="section section-tight">
