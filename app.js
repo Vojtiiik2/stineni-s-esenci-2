@@ -281,13 +281,12 @@ function TrustBand({ t }) {
 
 function Home({ t }) {
   const featuredWorks = [
-    { src: OUR_WORK[0], cols: "span 2" }, // 1 vlevo
-    { src: OUR_WORK[1], cols: "span 4" }, // 2 uprostřed širší
-    { src: OUR_WORK[5], cols: "span 2" }, // 3 vpravo
-
-    { src: OUR_WORK[2], cols: "span 3" }, // 4 dole vlevo
-    { src: OUR_WORK[3], cols: "span 3" }, // 5 dole uprostřed
-    { src: OUR_WORK[4], cols: "span 2" }, // 6 dole vpravo
+    { src: OUR_WORK[0], cols: "span 2" },
+    { src: OUR_WORK[1], cols: "span 4" },
+    { src: OUR_WORK[5], cols: "span 2" },
+    { src: OUR_WORK[2], cols: "span 3" },
+    { src: OUR_WORK[3], cols: "span 3" },
+    { src: OUR_WORK[4], cols: "span 2" },
   ];
 
   return (
@@ -336,34 +335,34 @@ function Home({ t }) {
             </p>
           </div>
 
-        <div className="grid-3">
-  {(t.services || []).map((service, index) => (
-    <article
-      className="card service-card reveal"
-      key={service.name}
-      onClick={() => {
-        localStorage.setItem("openPricingIndex", String(index));
-        go("/pricing");
-      }}
-      style={{ cursor: "pointer" }}
-    >
-      <div className="service-card-top">
-        <h3>{service.name}</h3>
-        <p>{service.note}</p>
-      </div>
+          <div className="grid-3">
+            {(t.services || []).map((service, index) => (
+              <article
+                className="card service-card reveal"
+                key={service.name}
+                onClick={() => {
+                  localStorage.setItem("openPricingIndex", String(index));
+                  go("/pricing");
+                }}
+                style={{ cursor: "pointer" }}
+              >
+                <div className="service-card-top">
+                  <h3>{service.name}</h3>
+                  <p>{service.note}</p>
+                </div>
 
-      <div className="service-card-media">
-        <img
-          src={HOME_SERVICE_IMAGES[index] || HOME_SERVICE_IMAGES[0]}
-          alt={service.name}
-        />
-      </div>
+                <div className="service-card-media">
+                  <img
+                    src={HOME_SERVICE_IMAGES[index] || HOME_SERVICE_IMAGES[0]}
+                    alt={service.name}
+                  />
+                </div>
 
-      <div className="service-card-foot">{t.serviceCardCta}</div>
-    </article>
-  ))}
-</div>
-  </div>
+                <div className="service-card-foot">{t.serviceCardCta}</div>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="section section-tight">
@@ -390,23 +389,25 @@ function Home({ t }) {
             <h2 className="display h2">Luxusní pocit nevzniká okázalostí. Vzniká jistotou.</h2>
           </div>
 
-         <div className="grid-3">
-  {(t.benefits || []).map((item) => (
-    <article
-      className="card benefit-card reveal"
-      key={item.name}
-      onClick={() => {
-        localStorage.setItem("openProcessSection", "behind");
-        go("/process");
-      }}
-      style={{ cursor: "pointer" }}
-    >
-      <div className="script">Detail</div>
-      <h3>{item.name}</h3>
-      <p>{item.note}</p>
-    </article>
-  ))}
-</div>
+          <div className="grid-3">
+            {(t.benefits || []).map((item) => (
+              <article
+                className="card benefit-card reveal"
+                key={item.name}
+                onClick={() => {
+                  localStorage.setItem("openProcessSection", "behind");
+                  go("/process");
+                }}
+                style={{ cursor: "pointer" }}
+              >
+                <div className="script">Detail</div>
+                <h3>{item.name}</h3>
+                <p>{item.note}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section section-tight">
         <div className="shell">
