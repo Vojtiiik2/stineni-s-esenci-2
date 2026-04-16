@@ -471,45 +471,42 @@ contactPhotos: "Fotografie (volitelné)",
       "Pokud na webu používám cookies pro marketingové účely nebo pokročilou analytiku, informuji vás o tom při první návštěvě pomocí lišty a mám možnost získat váš souhlas. Souhlas můžete kdykoli odvolat úpravou nastavení nebo změnou nastavení prohlížeče."
     ]
   },
-
- en: {
+en: {
   brand1: "Jana Segelberg",
   brand2: "Shade & Scent",
 
   // Header nav
-  nav: ["How We Work", "Pricing", "Projects", "Essences", "Contact"],
+  nav: ["How We Work", "Pricing", "Gallery", "Essences", "Contact"],
 
   // Hero
-  heroSub: "Sheers · Curtains · Blinds · Curtain Rods",
+  heroSub: "Sheers · Curtains · Blinds · Curtain Rods Made to Measure",
   cta: "Book a Consultation",
 
   heroSlides: [
     { h1: "Sheers, curtains, blinds and curtain rods shaped around your space", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
-    { h1: "We design window treatments that bring calm, privacy and balance into the interior", bg: "assets/img/hero/hero-02.webp", pos: "center", posMobile: "center 55%" },
+    { h1: "We design window treatments that bring calm, privacy and atmosphere into the interior", bg: "assets/img/hero/hero-02.webp", pos: "center", posMobile: "center 55%" },
     { h1: "Complete service from consultation to final installation", bg: "assets/img/hero/hero-03.webp", pos: "center", posMobile: "center 50%" }
   ],
 
-  // Home
   homeAboutH: "We design and deliver interior window treatments",
 
   homeAbout: [
-    "Window treatments are not an isolated element. We select them in relation to the space, materials and the way the interior is used, so the result feels calm, natural and well balanced."
-  ],
-
-  services: [
-    { name: "Sheers", note: "Soften daylight, bring lightness and create a sense of ease." },
-    { name: "Curtains", note: "Provide privacy, soften sound and bring warmth into the space." },
-    { name: "Blinds", note: "A precise and practical way to control light with a clean look." },
-    { name: "Technical systems", note: "Tracks, curtain rods and solutions designed for the space." },
-    { name: "Service", note: "Taking down, cleaning, steaming and rehanging our installations." }
+    "Window treatments are never an isolated element. We choose them in relation to the space, the materials and the way the interior is used, so the whole feels calm, balanced and assured."
   ],
 
   serviceCardCta: "View guide prices →",
+  services: [
+    { name: "Sheers", note: "Soften daylight, add warmth and bring lightness into the space." },
+    { name: "Curtains", note: "Help with blackout, acoustics and the feeling of warmth and calm." },
+    { name: "Blinds", note: "A practical solution for precise light control and a clean look." },
+    { name: "Technical systems", note: "Tracks, curtain rods and solutions designed around the space." },
+    { name: "Service", note: "Taking down, cleaning, steaming and rehanging our own installations." }
+  ],
+  serviceCardCta: "View guide prices →",
 
-  inspH: "Atmosphere",
+  inspH: "The Atmosphere of a Space",
   inspLead:
-    "Well-designed window treatments influence more than just the window.\nThey shape light during the day, privacy in the evening and the overall feeling of the space. The difference is often more noticeable than expected.",
-
+    "Well-designed window treatments change more than just the window.\nThey shape the light throughout the day, privacy in the evening and the overall feeling of the interior. The difference between a space without window treatments and one with a thoughtful solution is often greater than expected.",
   inspTags: [
     "Light · Space · Freedom",
     "Softness · Movement · Privacy",
@@ -518,156 +515,420 @@ contactPhotos: "Fotografie (volitelné)",
 
   benefitsH: "Why clients choose us",
   benefits: [
-    {
-      name: "Individual approach",
-      note: "Every space has its own light, proportions and rhythm. The design always responds to that."
-    },
-    {
-      name: "20 years of experience",
-      note: "We understand materials, technical solutions and details that define the final result."
-    },
-    {
-      name: "Complete service",
-      note: "From consultation and measuring to production, installation and final styling."
-    }
+    { name: "Individual design", note: "Every space has different light, proportions and needs. That is why every design is created specifically for the interior in question." },
+    { name: "20 years of experience", note: "We know the materials, technical solutions and the details that define the final result." },
+    { name: "Complete service", note: "From the first consultation through measuring and production to installation and final hanging." }
   ],
 
-  benefitCardCta: "Learn more →",
+  benefitCardCta: "Find out more →",
 
-  faqH: "Frequently asked",
+  faqH: "Frequently Asked Questions",
   faq: [
-    {
-      q: "How does the consultation work?",
-      a: "We visit your space, understand your needs and suggest a solution that fits both technically and visually."
-    },
-    {
-      q: "How long does the process take?",
-      a: "Typically 2–8 weeks depending on scope, materials and availability."
-    },
-    {
-      q: "Do you bring fabric samples?",
-      a: "Yes, we bring samples directly to your space so you can choose in real light and context."
-    },
-    {
-      q: "Do you supply tracks and curtain rods?",
-      a: "Yes, we provide complete solutions including systems and installation."
-    },
-    {
-      q: "Can you do just one room?",
-      a: "Yes. We work on both full interiors and individual rooms."
-    }
+    { q: "How does the consultation work?", a: "We come to you, look at the space, discuss your needs and recommend a suitable window treatment solution." },
+    { q: "How long does the process take?", a: "Usually 2–8 weeks, depending on the scope of the project, the chosen materials and current availability." },
+    { q: "Do you bring fabric samples to our home?", a: "Yes, we bring fabric samples directly to your space during the consultation so you can choose in real light and in the context of the interior." },
+    { q: "Do you also supply tracks and curtain rods?", a: "Yes, we provide complete delivery including tracks, curtain rods, technical systems and installation." },
+    { q: "Is it possible to do just one room?", a: "Yes. We design both complete interiors and individual rooms according to the client's specific needs." }
   ],
 
-  homeCtaNote:
-    "Prague and surrounding areas. Consultation directly in your interior. Design, production and installation tailored to the space.",
+  homeCtaNote: "Prague and surrounding areas. Consultation directly in your interior. Design, production and installation made to measure.",
 
   homeTrust: [
     { value: "20+", label: "years of experience" },
-    { value: "Individual design", label: "based on the space and how it is used" },
+    { value: "Individual design", label: "based on the space and the way it is used" },
     { value: "Complete service", label: "from design to installation" },
     { value: "Collaboration", label: "with architects and designers" }
   ],
 
   // Process
-  processH: "How we work",
-  steps: ["Consultation", "Design & pricing", "Production", "Installation"],
-
+  processH: "How We Work",
+  steps: ["Consultation", "Design & Pricing", "Production", "Installation"],
   stepsTxt: [
-    "We visit you, go through the space and take precise measurements.\n\nWe discuss whether you are looking for privacy, blackout or a purely aesthetic layer.\n\nWe show fabric samples and suggest solutions that make sense both technically and visually.\n\nAfter the consultation, you have a clear direction.",
-    
-    "Based on the selected materials and solution, we prepare a quotation.\n\nIf needed, we adjust it together to find the right balance between aesthetics, function and budget.\n\nBefore production starts, everything is clearly defined.",
-    
-    "After approval and deposit, production begins.\n\nTextiles are prepared and all technical elements are arranged.\n\nAt the same time, we plan installation timing.\n\nProduction usually takes several weeks depending on scope.",
-    
-    "We install everything, carefully hang the textiles and adjust the final look.\n\nEverything is cleaned, styled and prepared for use.\n\nWe explain operation and recommend maintenance so the result lasts."
+    "We come to you, walk through the space on site and take precise measurements.\n\nWe discuss whether you expect privacy, blackout or a purely decorative function from the window treatments.\n\nWe show you fabric samples and recommend solutions that make sense in the space both technically and visually.\n\nAfter the consultation, you will have a clear idea of the available options and the direction the design will take.",
+    "Based on the selected materials and technical solution, we prepare a quotation.\n\nThis serves as the starting point. If the price needs adjusting, we look together for alternatives in materials, technique or the overall composition of the solution.\n\nThe aim is to find the right balance between function, aesthetics and budget.\n\nBefore production begins, you know exactly what will be delivered and at what price.",
+    "Once the quotation is approved and the deposit is paid, production begins.\n\nAt this stage, the textiles are made and all technical elements are prepared.\n\nAt the same time, we arrange the installation date so that it follows the completion of production smoothly.\n\nProduction usually takes several weeks depending on the scope of the project and the selected materials.",
+    "We deliver the finished window treatments, install them professionally and hang the textiles with care.\n\nBoth sheers and curtains are steamed, styled and adjusted so that everything works visually as well as technically.\n\nOnce the work is finished, we tidy the space and hand it back ready to use.\n\nOn site, we explain the operation and recommend suitable maintenance so the window treatments continue to function as they should over time."
   ],
-
-  processBridges: [
-    "Observation shapes direction.",
-    "Design becomes reality.",
-    "Detail defines the result."
+  processImgs: [
+    "assets/img/process/process-01.webp",
+    "assets/img/process/process-02.webp",
+    "assets/img/process/process-03.webp",
+    "assets/img/process/process-04.webp"
   ],
-
+  processBridges: ["Direction grows from observation.", "Design turns into reality.", "Detail defines the result."],
   processMicroByStep: [
-    "Light, proportions, rhythm.",
-    "Material, technique, balance.",
+    "Light, proportions, rhythm of the day.",
+    "Material, technique, harmony.",
     "Craft, precision, patience.",
-    "Installation, detail, calm."
+    "Installation, finishing, calm."
   ],
-
-  processEnding:
-    "The goal is simple — for you to feel naturally well in the space.",
+  processBehindH: "What stands behind our work",
+  processBehindCards: [
+    {
+      id: "individualni-navrh",
+      title: "Individual design",
+      p1: "Every space has different light, different proportions and a different rhythm throughout the day.",
+      p2: "The design takes shape directly on site through observing the light, the layout of the space and the way you use the interior.",
+      p3: "For us, individual design means finding the right choice together."
+    },
+    {
+      id: "zkusenosti",
+      title: "20 years of experience",
+      p1: "Experience gives us perspective and confidence when making decisions.",
+      p2: "We help you navigate the options and bring function and aesthetics into balance.",
+      p3: "The result is a solution that makes sense not only visually, but also functionally and in the long term."
+    },
+    {
+      id: "detail",
+      title: "Precision and refinement in detail",
+      p1: "Quality of workmanship and technical execution determine whether the window treatments will continue to function well and look good even years later.",
+      p2: "It is in the details that the difference becomes visible between a solution that only looks good and one that truly stands the test of time.",
+      p3: "Precision and detail are visible at first glance. This is where your expectations meet our experience."
+    }
+  ],
+  processEnding: "The goal is for you to feel naturally and genuinely well in the space.",
 
   // Pricing
-  priceH: "Pricing",
+  priceH: "What Our Window Treatments Cost",
 
   pricingIntro: [
-    "Pricing depends on window size, materials and the chosen solution.",
-    "Here you can find guide prices to get an initial idea before consultation.",
-    "Each proposal is always prepared individually."
+    "The price of made-to-measure window treatments varies depending on window size, material and the chosen solution.",
+    "On this page, you will find guide prices for sheers, curtains, blinds, tracks and curtain rods so you can get an initial idea before the consultation.",
+    "Every proposal is prepared individually according to the space, the light and the way the interior is used."
   ],
 
   pricingDisclaimer:
-    "All prices are indicative. The final quotation is always based on an on-site consultation.",
-
-  openDetail: "View detail",
-  writeMe: "Book a consultation",
+    "The amounts shown are indicative scenarios for reference only. The exact design and quotation are always refined after an on-site consultation according to dimensions, selected materials and the technical solution.",
+  openDetail: "Open detail",
+  writeMe: "Non-binding consultation",
   close: "Close",
 
+  pricingItems: [
+    {
+      key: "zaclon",
+      title: "Sheers",
+      img: "assets/img/pricing/pricing-01.webp",
+      vibe: "The light remains. The space becomes softer and more welcoming.",
+      micro: "Light, proportion, softness.",
+      intro: "Sheers allow daylight to pass through while creating a basic level of privacy in the interior. An ideal solution for living rooms, bedrooms and large French windows.",
+      rangesTitle: "Guide prices",
+      ranges: [
+        { label: "small window (200 x 270cm)", value: "approx. CZK 3–16 thousand" },
+        { label: "large window (500 x 290cm)", value: "approx. CZK 8–42 thousand" }
+      ],
+      rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+      tiersTitle: "Types",
+      tiers: [
+        { name: "Basic lightweight voiles", note: "Airy fabrics with a lower purchase cost." },
+        { name: "Mid-range category", note: "A balanced ratio of price, appearance and function." },
+        { name: "Premium fabrics", note: "Exclusive texture and natural materials." }
+      ]
+    },
+    {
+      key: "zaves",
+      title: "Curtains",
+      img: "assets/img/pricing/pricing-02.webp",
+      vibe: "They create privacy. They calm the evening. They protect the morning.",
+      micro: "Material, quiet, comfort.",
+      intro: "Curtains provide privacy, blackout and help regulate both light and temperature in the space. Suitable for bedrooms, living rooms and interiors where you want to achieve a strong sense of calm.",
+      rangesTitle: "Guide prices",
+      ranges: [
+        { label: "small window (200 x 270cm)", value: "approx. CZK 6–21 thousand" },
+        { label: "large window (500 x 290cm)", value: "approx. CZK 15–49 thousand" }
+      ],
+      rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+      tiersTitle: "Types",
+      tiers: [
+        { name: "Decorative curtain", note: "Primarily for appearance and privacy." },
+        { name: "Dim-out", note: "Softens the light, but does not create complete darkness." },
+        { name: "Blackout", note: "Maximum blackout with partial thermal insulation." }
+      ]
+    },
+    {
+      key: "roleta",
+      title: "Blinds",
+      img: "assets/img/pricing/roleta-latkova.webp",
+      vibe: "Clean lines. Function without compromise.",
+      micro: "Light control, simplicity.",
+      intro: "Blinds allow precise light control and offer a clean, minimalist solution without curtains. Suitable for kitchens, bathrooms, studies and modern interiors.",
+      subtypes: [
+        {
+          key: "latkova",
+          label: "Fabric blind",
+          img: "assets/img/pricing/roleta-latkova.webp",
+          micro: "Light control, simplicity.",
+          intro: "Fabric blinds allow light to be regulated according to the selected material, from gentle shading to stronger blackout. A practical solution for everyday use.",
+          rangesTitle: "Guide prices",
+          ranges: [
+            { label: "small window (130 x 200cm)", value: "approx. CZK 10–35 thousand / pc" },
+            { label: "large window (350 x 300cm)", value: "approx. CZK 32–85 thousand / pc" }
+          ],
+          rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+          tiersTitle: "Types",
+          tiers: [
+            { name: "Screen / daytime", note: "Light control and airiness." },
+            { name: "Blackout", note: "More privacy and softened light." },
+            { name: "Motorised", note: "More comfort, higher cost." }
+          ]
+        },
+        {
+          key: "rimska",
+          label: "Roman blind",
+          img: "assets/img/pricing/roleta-rimska.webp",
+          micro: "A soft textile layer, decoration and calm.",
+          intro: "Roman blinds combine the function of a blind with the look of a curtain. Suitable for interiors where you want to preserve the softness of textile without classic curtains.",
+          rangesTitle: "Guide prices",
+          ranges: [
+            { label: "small window (110 x 150cm)", value: "approx. CZK 6–11 thousand / pc" },
+            { label: "large window (180 x 250cm)", value: "approx. CZK 14–19 thousand / pc" }
+          ],
+          rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+          tiersTitle: "Types",
+          tiers: [
+            { name: "In sheer fabrics", note: "Airiness and practicality." },
+            { name: "In curtain fabrics", note: "Privacy and blackout." },
+            { name: "Motorised", note: "More comfort, higher cost." }
+          ]
+        },
+        {
+          key: "plisse",
+          label: "Pleated blind",
+          img: "assets/img/pricing/roleta-plisse.webp",
+          micro: "Precise dosing of light. Excellent for unusual window shapes.",
+          intro: "Pleated blinds can be drawn from both the top and the bottom, allowing very precise light control. An ideal solution for unusual windows and specific situations.",
+          rangesTitle: "Guide prices",
+          ranges: [
+            { label: "small window (80 x 100cm)", value: "approx. CZK 3.3–6 thousand / pc" },
+            { label: "large window (120 x 220cm)", value: "approx. CZK 7–16 thousand / pc" }
+          ],
+          rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+          tiersTitle: "Types",
+          tiers: [
+            { name: "Screen / daytime", note: "Light control and airiness." },
+            { name: "Blackout", note: "More privacy and softened light." }
+          ]
+        }
+      ]
+    },
+    {
+      key: "systemy",
+      title: "Tracks and curtain rods",
+      img: "assets/img/pricing/systemy-kolejnice.webp",
+      vibe: "The foundation that holds and guides everything.",
+      micro: "Functional as well as decorative.",
+      intro: "Tracks and curtain rods ensure both the correct function and the visual finish of the window treatments. We design them according to the space and the type of textile.",
+      subtypes: [
+        {
+          key: "kolejnice",
+          label: "Tracks",
+          img: "assets/img/pricing/systemy-kolejnice.webp",
+          micro: "A clean line. Function and precision.",
+          intro: "Tracks for curtains and sheers provide a clean and functional window treatment solution. Suitable for ceilings, walls and unusual spaces, including curved options.",
+          rangesTitle: "Guide prices",
+          ranges: [
+            { label: "small window (200 x 270cm)", value: "approx. CZK 1–13 thousand" },
+            { label: "large window (500 x 290cm)", value: "approx. CZK 2.5–18 thousand" }
+          ],
+          rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+          tiersTitle: "Types",
+          tiers: [
+            { name: "Straight", note: "A simple, clean solution." },
+            { name: "Curved", note: "According to layout and spatial flow." },
+            { name: "Motorised", note: "Comfort and automation." }
+          ]
+        },
+        {
+          key: "garnyze",
+          label: "Curtain rods",
+          img: "assets/img/pricing/systemy-garnyze.webp",
+          micro: "Décor. A detail that remains visible.",
+          intro: "Curtain rods are a visible interior element. We choose materials, colours and details so they work in harmony with the textile and the overall character of the space.",
+          rangesTitle: "Guide prices",
+          ranges: [
+            { label: "small window (200 x 270cm)", value: "approx. CZK 1–13 thousand" },
+            { label: "large window (500 x 290cm)", value: "approx. CZK 2.5–18 thousand" }
+          ],
+          rangesNote: "The guide price includes design according to the space, measuring, production, installation and final styling.",
+          tiersTitle: "Types",
+          tiers: [
+            { name: "Classic", note: "Decorative solutions for flats and houses." },
+            { name: "Designer", note: "A more distinctive material, finish or detail." },
+            { name: "Individual solution", note: "Specific fixing, lengths and corner details." }
+          ]
+        }
+      ]
+    },
+    {
+      key: "servis",
+      title: "Service and maintenance",
+      img: "assets/img/pricing/pricing-05.webp",
+      vibe: "Professional care in three steps.",
+      micro: "Like new again.",
+      intro: "We provide service for sheers and curtains from taking them down through washing or cleaning to rehanging and final finishing.",
+      rangesTitle: "Guide prices by scope",
+      ranges: [
+        { label: "small window (200 x 270cm)", value: "approx. CZK 6–8 thousand" },
+        { label: "large window (500 x 290cm)", value: "approx. CZK 17–20 thousand" }
+      ],
+      rangesNote: "The guide price includes both textile layers, meaning both the sheer and the curtain.",
+      tiersTitle: "Types",
+      tiers: [
+        { name: "Standard maintenance", note: "Taking down, washing/cleaning, steaming and rehanging." },
+        { name: "Large areas", note: "More panels and more demanding handling." },
+        { name: "Unusual layouts / heights", note: "Special access, scaffolding/lift depending on the situation." }
+      ],
+      serviceOnlyNote: "We provide service only for our own installations."
+    }
+  ],
+
   // Gallery
-  galleryH: "Projects",
-  galleryOurWorkH: "Selected projects",
-  galleryOurWorkP:
-    "Explore our work across different types of interiors. Each solution is designed in relation to the space and its use.",
-  galleryShowAll: "View all →",
-  galleryModalH: "Our work",
-  galleryModalSub:
-    "Details of sheers, curtains, blinds and technical systems.",
+  galleryH: "Completed Projects",
+  galleryOurWorkH: "Examples of our work",
+  galleryOurWorkP: "Browse our projects featuring sheers, curtains, blinds, tracks and curtain rods in different types of interiors. Every solution is designed specifically for the space, the light and the way the room is used.",
+  galleryShowAll: "View all projects →",
+  galleryModalH: "Made-to-measure window treatments",
+  galleryModalSub: "Explore the details of our sheers, curtains, blinds and technical systems.",
+  galleryPartnersH: "We work with architects and designers",
+  galleryPartnersP: "We often collaborate with architects and interior designers to refine the final form of the window treatments so they feel fully aligned with the space and the overall interior concept.",
+  galleryVisitWeb: "Visit website →",
 
-  galleryPartnersH: "Collaboration",
-  galleryPartnersP:
-    "We often work together with architects and designers to fine-tune the final result.",
-
-  galleryVisitWeb: "Visit →",
+  galleryPartnersNotes: {
+    onoje: "Architecture with a feel for atmosphere, material and detail. We bring in the final layer.",
+    richter: "Collaboration on interiors where clean lines, function and calm matter.",
+    epic: "An interior studio focused on atmosphere, function and detail. Together, we refine the final layer of window treatments so the space feels natural and harmonious.",
+    broda: "Interior design focused on timelessness, spatial thinking and materials. We collaborate on projects where window treatments complete the calm and character of the interior."
+  },
 
   // Essences
   essenceH: "Essences",
   essenceLead:
-    "Scent completes the atmosphere of a space. It connects with light, textiles and the rhythm of the day.",
-
+    "Fragrance gently complements the visual impression of a space. It helps shape an atmosphere connected to light, textile and the rhythm of the day. Selected essences are used as a subtle yet effective element of the overall experience of the interior.",
   essenceBoxH: "Essences in preparation",
   essenceBoxP:
-    "Scents will form a separate layer connected to the atmosphere of each space.\n\nThey will be selected according to how the space is used.",
+    "Fragrances will become a separate layer connected to the space and its atmosphere.\n\nThey will be tuned to the needs and activities that take place within that interior.",
   essenceBoxFoot: "Coming soon",
 
   // Contact
   contactH: "Contact",
   name: "Name",
-  email: "Email",
+  email: "E-mail",
   message: "Message",
   send: "Send",
-
   contactHowH: "How it works",
   contactHow: [
-    "Send a short message and optionally photos.",
-    "We agree on a consultation date.",
-    "We refine the solution together on site."
+    "Send a short message and optionally photos of the windows or the space.",
+    "I will get back to you with a suggested consultation date.",
+    "On site, we will refine the solution together and I will prepare it for you."
   ],
-
+  contactNote: "",
   contactFullName: "Full name",
   contactPhone: "Phone",
   contactPhotos: "Photos (optional)",
 
   // Footer
   footerContactH: "Contact",
-  footerLegalH: "Legal",
-  footerTerms: "Terms",
-  footerPrivacy: "Privacy",
+  footerLegalH: "Legal & Information",
+  footerTerms: "Terms and Conditions",
+  footerPrivacy: "Privacy Policy",
   footerCookies: "Cookies",
-  footerCta: "Get in touch →",
+  footerCta: "Write to me →",
+  footerBlurb: "Design and delivery of made-to-measure interior window treatments.\nSheers · Curtains · Blinds · Curtain Rods · Technical Systems",
+  rights: "All rights reserved.",
 
-  footerBlurb:
-    "Interior window treatments.\nSheers · Curtains · Blinds · Curtain rods",
+  // Terms / Privacy / Cookies pages
+  termsH: "Terms and Conditions",
+  termsIntro:
+    "These terms and conditions govern the relationship between the seller and the customer when purchasing goods and services through this website. Please read them before completing your order.",
+  termsSections: [
+    {
+      h: "I. Introductory Provisions",
+      p:
+        "The seller is the entrepreneur operating under the name or company name stated on this page and in the website footer, including registration number, VAT number and contact details. The customer is a natural or legal person who enters into a contract with the seller remotely through this website, by e-mail or by telephone."
+    },
+    {
+      h: "II. Offer of Goods and Services",
+      p:
+        "This website presents mainly interior window treatment products, whether finished or made to order, complementary products such as essences and fragrances, and related services including consultation, design proposals and installation. For made-to-measure projects, the price is determined individually according to the specific parameters of the order."
+    },
+    {
+      h: "III. Orders and Conclusion of Contract",
+      p:
+        "Goods or services may be ordered through the order form, by e-mail or by telephone. The contract is concluded when the seller confirms the order, usually by e-mail. For made-to-measure projects, the contract is concluded only after the customer has approved the specific quotation."
+    },
+    {
+      h: "IV. Prices and Payment Terms",
+      p:
+        "Prices are stated including VAT where applicable and including any statutory fees unless stated otherwise. Payment may be made by bank transfer or by another method specified in the order. For made-to-measure projects, the seller may request a deposit, the amount and due date of which are stated in the quotation."
+    },
+    {
+      h: "V. Delivery Terms",
+      p:
+        "Delivery time for finished goods is stated approximately for each product or in the order confirmation. For made-to-measure projects, it depends on the nature of the order, the selected materials and the agreed schedule. Goods are delivered by courier or handed over during personal installation."
+    },
+    {
+      h: "VI. Rights Arising from Defective Performance (Complaints)",
+      p:
+        "The customer is obliged to inspect the goods upon receipt and report any visible defects without undue delay. Complaints may be submitted in writing or by e-mail to the contact details stated on the website. The seller will resolve the complaint without undue delay, no later than within 30 days of its submission, unless otherwise agreed with the customer."
+    },
+    {
+      h: "VII. Consumer Right of Withdrawal",
+      p:
+        "If the customer is a consumer, they have the right to withdraw from a distance contract within 14 days of receipt of the goods unless a legal exception applies. This right does not apply in particular to goods made according to the customer’s wishes or for their personal use, for example curtains, sheers and window treatments made to specific dimensions and according to an approved design."
+    },
+    {
+      h: "VIII. Out-of-Court Dispute Resolution",
+      p:
+        "In the event of a dispute between the seller and a consumer, the consumer may contact the Czech Trade Inspection Authority (www.coi.cz) as the body for out-of-court dispute resolution."
+    },
+    {
+      h: "IX. Final Provisions",
+      p:
+        "Legal relations between the seller and the customer are governed by the laws of the Czech Republic. The current version of these terms and conditions is published on the seller’s website and may be updated from time to time."
+    }
+  ],
 
-  rights: "All rights reserved."
+  privacyH: "Privacy Policy",
+  privacyIntro:
+    "This page explains how I process personal data in connection with enquiries, orders and the operation of this website.",
+  privacySections: [
+    { h: "Data Controller", p: "The controller of personal data is the entrepreneur stated in the contact details on this website (name / company name, address, registration number, VAT number, e-mail and phone)." },
+    {
+      h: "What data I process and for what purpose",
+      p:
+        "I process mainly identification and contact data such as name, surname, company name, e-mail, phone number and address, as well as data related to the enquiry and project, for example dimensions, photographs of windows and interiors, your requirements regarding the solution, and invoicing data including payment details.\n\nI process this data for the purpose of handling enquiries, concluding contracts, delivering goods and services, maintaining accounts, fulfilling legal obligations and protecting legal claims, for example in the case of a complaint or dispute."
+    },
+    {
+      h: "Legal basis for processing",
+      p:
+        "The legal basis is primarily performance of a contract or steps taken before entering into a contract, compliance with legal obligations in the field of accounting and taxation, and legitimate interest in protecting legal claims. For possible marketing purposes such as newsletters, personal data would only be used with your consent or on the basis of legitimate interest if you are already my customer, always with a simple option to unsubscribe."
+    },
+    {
+      h: "Retention period of personal data",
+      p:
+        "Data related to contracts and invoicing is retained for the period required by law, typically 10 years. Data from non-binding enquiries is retained only for the period necessary to handle the communication, usually no longer than 1 year if the enquiry does not lead to a contractual relationship."
+    },
+    {
+      h: "Sharing personal data with third parties",
+      p:
+        "Personal data may be shared only to the necessary extent with an accountant or tax adviser, providers of IT and hosting services, carriers or installation partners if this is necessary for the project, and public authorities if required by law. Appropriate data processing agreements are concluded with these parties."
+    },
+    {
+      h: "Your rights",
+      p:
+        "You have the right to access your personal data, have it corrected or completed, restrict its processing, request deletion where the legal conditions are met, obtain data portability and object to processing based on legitimate interest.\n\nIf you believe that personal data is being processed unlawfully, you also have the right to lodge a complaint with the Office for Personal Data Protection (www.uoou.cz)."
+    },
+    {
+      h: "Interior photographs and reference images",
+      p:
+        "Photographs of your interior, windows and completed window treatments are used primarily for the design and execution of the project. For the use of photographs as references, for example in the project gallery, I will always ask for your explicit consent, or I will use them in a way that does not make you clearly identifiable."
+    }
+  ],
+
+  cookiesH: "Cookies",
+  cookiesP: [
+    "This website uses cookies to ensure its basic functionality and, where applicable, to measure traffic anonymously and improve the user experience.",
+    "Cookies are small text files stored in your browser. You can restrict or disable the use of cookies at any time in your browser settings. If you disable cookies, some functions of the website may be limited.",
+    "If cookies are used on the website for marketing purposes or advanced analytics, you will be informed during your first visit by means of a banner and given the option to provide consent. You may withdraw your consent at any time by changing the settings or adjusting your browser settings."
+  ]
 }
+ 
