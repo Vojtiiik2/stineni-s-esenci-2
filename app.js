@@ -797,6 +797,7 @@ function Contact({ t }) {
     e.preventDefault();
     setStatus({ kind: "", text: "" });
     setSending(true);
+
     try {
       const fd = new FormData();
       fd.append("name", form.name.trim());
@@ -805,7 +806,9 @@ function Contact({ t }) {
       fd.append("message", form.message.trim());
       fd.append("filesCount", String(files.length));
       files.forEach((file) => fd.append("files", file, file.name));
+
       await fetch(CONTACT_WEBHOOK, { method: "POST", body: fd, mode: "no-cors" });
+
       setForm({ name: "", email: "", phone: "", message: "" });
       setFiles([]);
       setStatus({ kind: "success", text: "Děkuji. Zpráva byla odeslána." });
@@ -818,58 +821,118 @@ function Contact({ t }) {
 
   return (
     <>
-      <Hero t={t} small image="assets/img/hero/contact-hero01.webp" title={t.contactH} lead="Pošlete zprávu, fotografie prostoru a ozveme se s dalším krokem." />
+      <Hero
+        t={t}
+        small
+        image="assets/img/hero/contact-hero01.webp"
+        title={t.contactH}
+        lead="Pošlete zprávu, fotografie prostoru a ozveme se s dalším krokem."
+      />
+
       <section className="section">
         <div className="shell contact-grid">
           <article className="card contact-card reveal">
             <h3>Jana Segelberg</h3>
+
             <div className="contact-list">
               <div>
                 <strong>{t.email}</strong>
                 <a href="mailto:info@stinenisesenci.cz">info@stinenisesenci.cz</a>
               </div>
+
               <div>
                 <strong>{t.contactPhone}</strong>
                 <a href="tel:+420724379309">+420 724 379 309</a>
               </div>
+
               <div>
                 <strong>Adresa</strong>
                 <p>Navrátilova 1334/16<br />110 00 Praha 1</p>
               </div>
+
               <div>
                 <strong>IČO / DIČ</strong>
                 <p>61289345<br />CZ7259060062</p>
               </div>
             </div>
+
             <div className="contact-steps">
               <strong>{t.contactHowH}</strong>
               <ol>
-                {(t.contactHow || []).map((item, idx) => <li key={idx}>{item}</li>)}
+                {(t.contactHow || []).map((item, idx) => (
+                  <li key={idx}>{item}</li>
+                ))}
               </ol>
               {t.contactNote && <p className="form-note">{t.contactNote}</p>}
+            </div>
+
+            <div className="card card-inner" style={{ marginTop: 22 }}>
+              <h3 style={{ marginBottom: 14, fontSize: "28px" }}>Segelberg &amp; Co. s.r.o.</h3>
+              <p style={{ margin: 0, lineHeight: 1.9, color: "var(--muted)" }}>
+                Sarajevská 1051/10<br />
+                120 00 Praha 2
+                <br /><br />
+                IČO 08619263<br />
+                DIČ CZ08619263
+              </p>
             </div>
           </article>
 
           <article className="card contact-card reveal">
             <h3>Nezávazná poptávka</h3>
+
+            <p className="form-note" style={{ marginTop: 0, marginBottom: 18 }}>
+              Popište nám prostor, pošlete fotografie a společně najdeme řešení, které
+              bude dávat smysl právě u vás.
+            </p>
+
+            <div className="form-note" style={{ marginTop: 0, marginBottom: 24 }}>
+              • Ozveme se vám s návrhem dalšího postupu<br />
+              • Domluvíme termín konzultace<br />
+              • Vzorky přivezeme přímo do vašeho interiéru
+            </div>
+
             <form onSubmit={handleSubmit}>
               <div className="form-grid">
                 <div className="field">
                   <label>{t.contactFullName}</label>
-                  <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                  <input
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  />
                 </div>
+
                 <div className="field">
                   <label>{t.email}</label>
-                  <input type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                  <input
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  />
                 </div>
-                <div className="field">
+
+                <div className="field full">
                   <label>{t.contactPhone}</label>
-                  <input type="tel" required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                  <input
+                    type="tel"
+                    required
+                    value={form.phone}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  />
                 </div>
+
                 <div className="field full">
                   <label>{t.message}</label>
-                  <textarea rows="6" required value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
+                  <textarea
+                    rows="6"
+                    required
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  />
                 </div>
+
                 <div className="field full">
                   <label>{t.contactPhotos}</label>
                   <input
@@ -881,10 +944,15 @@ function Contact({ t }) {
                   <small>Můžete přiložit až 5 fotografií.</small>
                 </div>
               </div>
-              <p className="form-note">Popište nám prostor, o co jde a jaký výsledek očekáváte. Vzorky vozíme přímo do interiéru.</p>
+
+              <p className="form-note">
+                Popište nám prostor, o co jde a jaký výsledek očekáváte. Vzorky vozíme přímo do interiéru.
+              </p>
+
               <button className="button button-primary" type="submit" disabled={sending}>
                 {sending ? "Odesílám…" : "Poslat nezávaznou poptávku"}
               </button>
+
               {status.text && <div className={`status ${status.kind}`}>{status.text}</div>}
             </form>
           </article>
@@ -893,7 +961,6 @@ function Contact({ t }) {
     </>
   );
 }
-
 function LegalPage({ t, kind }) {
   const map = {
     terms: {
