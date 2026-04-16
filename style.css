@@ -467,6 +467,9 @@ body.menu-open,body.modal-open{overflow:hidden}
 .essence-box p{margin:16px 0 0;color:var(--muted);line-height:1.9}
 
 .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}
+.contact-section{
+  padding-top: 64px;
+}
 .contact-card{padding:30px}
 .contact-card h3{margin:0 0 18px;font-family:"Cormorant Garamond",serif;font-size:38px;font-weight:600}
 .contact-list{display:grid;gap:18px}
