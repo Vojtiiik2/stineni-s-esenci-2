@@ -792,10 +792,27 @@ function Contact({ t }) {
   const [files, setFiles] = useState([]);
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState({ kind: "", text: "" });
+  const [touched, setTouched] = useState(false);
+
+  const nameOk = form.name.trim().length >= 2;
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());
+  const phoneOk = form.phone.trim().length >= 6;
+  const messageOk = form.message.trim().length >= 5;
+  const canSend = nameOk && emailOk && phoneOk && messageOk;
+
+  function fieldClass(isValid) {
+    return isValid
+      ? ""
+      : " input-error";
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setTouched(true);
     setStatus({ kind: "", text: "" });
+
+    if (!canSend || sending) return;
+
     setSending(true);
 
     try {
@@ -807,10 +824,15 @@ function Contact({ t }) {
       fd.append("filesCount", String(files.length));
       files.forEach((file) => fd.append("files", file, file.name));
 
-      await fetch(CONTACT_WEBHOOK, { method: "POST", body: fd, mode: "no-cors" });
+      await fetch(CONTACT_WEBHOOK, {
+        method: "POST",
+        body: fd,
+        mode: "no-cors",
+      });
 
       setForm({ name: "", email: "", phone: "", message: "" });
       setFiles([]);
+      setTouched(false);
       setStatus({ kind: "success", text: "Děkuji. Zpráva byla odeslána." });
     } catch (err) {
       setStatus({ kind: "error", text: "Odeslání se nepodařilo. Zkuste to prosím znovu." });
@@ -893,7 +915,7 @@ function Contact({ t }) {
               • Vzorky přivezeme přímo do vašeho interiéru
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} noValidate>
               <div className="form-grid">
                 <div className="field">
                   <label>{t.contactFullName}</label>
@@ -901,6 +923,8 @@ function Contact({ t }) {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    onBlur={() => setTouched(true)}
+                    className={touched && !nameOk ? "input-error" : ""}
                   />
                 </div>
 
@@ -911,6 +935,8 @@ function Contact({ t }) {
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    onBlur={() => setTouched(true)}
+                    className={touched && !emailOk ? "input-error" : ""}
                   />
                 </div>
 
@@ -921,6 +947,8 @@ function Contact({ t }) {
                     required
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    onBlur={() => setTouched(true)}
+                    className={touched && !phoneOk ? "input-error" : ""}
                   />
                 </div>
 
@@ -931,6 +959,8 @@ function Contact({ t }) {
                     required
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    onBlur={() => setTouched(true)}
+                    className={touched && !messageOk ? "input-error" : ""}
                   />
                 </div>
 
@@ -950,7 +980,7 @@ function Contact({ t }) {
                 Popište nám prostor, o co jde a jaký výsledek očekáváte. Vzorky vozíme přímo do interiéru.
               </p>
 
-              <button className="button button-primary" type="submit" disabled={sending}>
+              <button className="button button-primary" type="submit" disabled={sending || !canSend}>
                 {sending ? "Odesílám…" : "Poslat nezávaznou poptávku"}
               </button>
 
@@ -962,6 +992,9 @@ function Contact({ t }) {
     </>
   );
 }
+
+
+
 function LegalPage({ t, kind }) {
   const map = {
     terms: {
