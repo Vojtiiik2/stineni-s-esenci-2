@@ -829,7 +829,7 @@ function Contact({ t }) {
         lead="Pošlete zprávu, fotografie prostoru a ozveme se s dalším krokem."
       />
 
-      <section className="section">
+      <section className="section contact-section">
         <div className="shell contact-grid">
           <div className="reveal">
             <article className="card contact-card" style={{ marginBottom: 20 }}>
