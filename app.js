@@ -831,136 +831,57 @@ function Contact({ t }) {
 
       <section className="section">
         <div className="shell contact-grid">
-          <article className="card contact-card reveal">
-            <h3>Jana Segelberg</h3>
+         <article className="contact-card reveal">
 
-            <div className="contact-list">
-              <div>
-                <strong>{t.email}</strong>
-                <a href="mailto:info@stinenisesenci.cz">info@stinenisesenci.cz</a>
-              </div>
+  {/* HLAVNÍ BOX */}
+  <div className="card contact-card" style={{ marginBottom: 20 }}>
+    <h3>Jana Segelberg</h3>
 
-              <div>
-                <strong>{t.contactPhone}</strong>
-                <a href="tel:+420724379309">+420 724 379 309</a>
-              </div>
+    <div className="contact-list">
+      <div>
+        <strong>{t.email}</strong>
+        <a href="mailto:info@stinenisesenci.cz">info@stinenisesenci.cz</a>
+      </div>
 
-              <div>
-                <strong>Adresa</strong>
-                <p>Navrátilova 1334/16<br />110 00 Praha 1</p>
-              </div>
+      <div>
+        <strong>{t.contactPhone}</strong>
+        <a href="tel:+420724379309">+420 724 379 309</a>
+      </div>
 
-              <div>
-                <strong>IČO / DIČ</strong>
-                <p>61289345<br />CZ7259060062</p>
-              </div>
-            </div>
+      <div>
+        <strong>Adresa</strong>
+        <p>Navrátilova 1334/16<br />110 00 Praha 1</p>
+      </div>
 
-            <div className="contact-steps">
-              <strong>{t.contactHowH}</strong>
-              <ol>
-                {(t.contactHow || []).map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ol>
-              {t.contactNote && <p className="form-note">{t.contactNote}</p>}
-            </div>
+      <div>
+        <strong>IČO / DIČ</strong>
+        <p>61289345<br />CZ7259060062</p>
+      </div>
+    </div>
 
-            <div className="card card-inner" style={{ marginTop: 22 }}>
-              <h3 style={{ marginBottom: 14, fontSize: "28px" }}>Segelberg &amp; Co. s.r.o.</h3>
-              <p style={{ margin: 0, lineHeight: 1.9, color: "var(--muted)" }}>
-                Sarajevská 1051/10<br />
-                120 00 Praha 2
-                <br /><br />
-                IČO 08619263<br />
-                DIČ CZ08619263
-              </p>
-            </div>
-          </article>
+    <div className="contact-steps">
+      <strong>{t.contactHowH}</strong>
+      <ol>
+        {(t.contactHow || []).map((item, idx) => (
+          <li key={idx}>{item}</li>
+        ))}
+      </ol>
+    </div>
+  </div>
 
-          <article className="card contact-card reveal">
-            <h3>Nezávazná poptávka</h3>
+  {/* DRUHÝ BOX */}
+  <div className="card contact-card">
+    <h3>Segelberg &amp; Co. s.r.o.</h3>
+    <p style={{ lineHeight: 1.9, color: "var(--muted)" }}>
+      Sarajevská 1051/10<br />
+      120 00 Praha 2
+      <br /><br />
+      IČO 08619263<br />
+      DIČ CZ08619263
+    </p>
+  </div>
 
-            <p className="form-note" style={{ marginTop: 0, marginBottom: 18 }}>
-              Popište nám prostor, pošlete fotografie a společně najdeme řešení, které
-              bude dávat smysl právě u vás.
-            </p>
-
-            <div className="form-note" style={{ marginTop: 0, marginBottom: 24 }}>
-              • Ozveme se vám s návrhem dalšího postupu<br />
-              • Domluvíme termín konzultace<br />
-              • Vzorky přivezeme přímo do vašeho interiéru
-            </div>
-
-            <form onSubmit={handleSubmit}>
-              <div className="form-grid">
-                <div className="field">
-                  <label>{t.contactFullName}</label>
-                  <input
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  />
-                </div>
-
-                <div className="field">
-                  <label>{t.email}</label>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  />
-                </div>
-
-                <div className="field full">
-                  <label>{t.contactPhone}</label>
-                  <input
-                    type="tel"
-                    required
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  />
-                </div>
-
-                <div className="field full">
-                  <label>{t.message}</label>
-                  <textarea
-                    rows="6"
-                    required
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  />
-                </div>
-
-                <div className="field full">
-                  <label>{t.contactPhotos}</label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={(e) => setFiles(Array.from(e.target.files || []).slice(0, 5))}
-                  />
-                  <small>Můžete přiložit až 5 fotografií.</small>
-                </div>
-              </div>
-
-              <p className="form-note">
-                Popište nám prostor, o co jde a jaký výsledek očekáváte. Vzorky vozíme přímo do interiéru.
-              </p>
-
-              <button className="button button-primary" type="submit" disabled={sending}>
-                {sending ? "Odesílám…" : "Poslat nezávaznou poptávku"}
-              </button>
-
-              {status.text && <div className={`status ${status.kind}`}>{status.text}</div>}
-            </form>
-          </article>
-        </div>
-      </section>
-    </>
-  );
-}
+</article>
 function LegalPage({ t, kind }) {
   const map = {
     terms: {
