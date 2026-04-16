@@ -766,3 +766,6 @@ body.menu-open,body.modal-open{overflow:hidden}
 .benefit-card:active{
   transform:translateY(-2px);
 }
+.input-error {
+  border-color: #c87171 !important;
+}
