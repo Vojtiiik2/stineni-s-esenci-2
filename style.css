@@ -59,8 +59,8 @@ body.menu-open,body.modal-open{overflow:hidden}
 .display{
   font-family:"Cormorant Garamond",Georgia,serif;
   font-weight:600;
-  letter-spacing:-.03em;
-  line-height:.95;
+  letter-spacing:-.02em;
+  line-height:1.06;
   margin:0;
 }
 .h1{font-size:clamp(56px,8vw,110px)}
@@ -791,4 +791,40 @@ body.menu-open,body.modal-open{overflow:hidden}
 }
 .input-error {
   border-color: #c87171 !important;
+}
+.display{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-weight:600;
+  letter-spacing:-.02em;
+  line-height:1.06;
+  margin:0;
+}
+
+.hero-copy .display,
+.page-hero-copy .display{
+  line-height:1.02;
+}
+
+.section-header .display{
+  margin-bottom:10px;
+}
+
+.feature-copy .display{
+  line-height:1.08;
+  margin-bottom:18px;
+}
+
+.essence-box .display{
+  line-height:1.06;
+  margin-bottom:14px;
+}
+
+.essence-box .script{
+  display:block;
+  margin-top:2px;
+  margin-bottom:14px;
+}
+
+.h1,.h2,.h3{
+  text-wrap:balance;
 }
