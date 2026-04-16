@@ -226,7 +226,7 @@ body.menu-open,body.modal-open{overflow:hidden}
 .hero-content{
   position:relative;
   z-index:3;
-  padding:clamp(92px,13vh,140px) 0 56px;
+  padding:clamp(72px,10vh,112px) 0 44px;
 }
 .hero-grid{
   display:grid;
