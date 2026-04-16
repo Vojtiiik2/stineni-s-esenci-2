@@ -24,7 +24,7 @@ heroSlides: [
 homeAboutH: "Navrhujeme a realizujeme vnitřní stínění",
 
 homeAbout: [
-  "Pomáháme vytvářet interiéry, ve kterých světlo, soukromí a atmosféra fungují v rovnováze. Navrhujeme záclony, závěsy, rolety a garnýže tak, aby odpovídaly prostoru i tomu, jak v něm skutečně žijete."
+  "Pomáháme prostoru najít správnou míru světla, soukromí a klidu. Stínění navrhujeme tak, aby působilo přirozeně a dlouhodobě dobře fungovalo."
 ],
 
     serviceCardCta: "Zobrazit orientační ceny →",
