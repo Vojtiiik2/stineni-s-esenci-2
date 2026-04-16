@@ -11,19 +11,20 @@ window.STR = {
   nav: ["Jak pracujeme", "Kolik zaplatíte", "Galerie", "Esence", "Kontakt"],
 
     // Hero
-  heroSub: "Návrh a realizace vnitřního stínění · záclony · závěsy · rolety · garnýže",
+ // Hero
+heroSub: "Záclony · Závěsy · Rolety · Garnýže na míru",
+cta: "Domluvit konzultaci",
 
 heroSlides: [
-  { h1: "Záclony, závěsy, rolety a garnýže navržené pro váš interiér", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
-  { h1: "Vnitřní stínění, které přináší klid, soukromí a atmosféru", bg: "assets/img/hero/hero-02.webp", pos: "center", posMobile: "center 55%" },
-  { h1: "Kompletní návrh, výroba a montáž stínění na míru", bg: "assets/img/hero/hero-03.webp", pos: "center", posMobile: "center 50%" }
+  { h1: "Záclony, závěsy, rolety a garnýže podle vašeho prostoru", bg: "assets/img/hero/hero-01.webp", pos: "center", posMobile: "center 35%" },
+  { h1: "Navrhujeme stínění, které dává interiéru klid, soukromí a atmosféru", bg: "assets/img/hero/hero-02.webp", pos: "center", posMobile: "center 55%" },
+  { h1: "Kompletní realizace od konzultace po finální montáž", bg: "assets/img/hero/hero-03.webp", pos: "center", posMobile: "center 50%" }
 ],
 
-homeAboutH: "Navrhujeme a realizujeme vnitřní stínění na míru",
+homeAboutH: "Navrhujeme a realizujeme vnitřní stínění",
 
 homeAbout: [
-  "Navrhujeme a realizujeme vnitřní stínění na míru pro byty, domy i reprezentativní interiéry. Pomáháme vytvářet prostory, ve kterých světlo, soukromí a atmosféra fungují v rovnováze. Řešíme záclony, závěsy, rolety, garnýže i technické systémy tak, aby odpovídaly prostoru i tomu, jak v něm skutečně žijete.",
-  "Jsme česká rodinná firma s více než 20 lety zkušeností. Zajišťujeme kompletní servis od konzultace a zaměření přes výběr materiálů a šití až po montáž a finální dekorování."
+  "Pomáháme vytvářet interiéry, ve kterých světlo, soukromí a atmosféra fungují v rovnováze. Navrhujeme záclony, závěsy, rolety a garnýže tak, aby odpovídaly prostoru i tomu, jak v něm skutečně žijete."
 ],
 
     serviceCardCta: "Zobrazit orientační ceny →",
