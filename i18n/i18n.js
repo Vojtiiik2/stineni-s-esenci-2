@@ -471,6 +471,7 @@ contactPhotos: "Fotografie (volitelné)",
       "Pokud na webu používám cookies pro marketingové účely nebo pokročilou analytiku, informuji vás o tom při první návštěvě pomocí lišty a mám možnost získat váš souhlas. Souhlas můžete kdykoli odvolat úpravou nastavení nebo změnou nastavení prohlížeče."
     ]
   },
+  
 en: {
   brand1: "Jana Segelberg",
   brand2: "Shade & Scent",
@@ -924,11 +925,11 @@ en: {
     }
   ],
 
-  cookiesH: "Cookies",
+ cookiesH: "Cookies",
   cookiesP: [
     "This website uses cookies to ensure its basic functionality and, where applicable, to measure traffic anonymously and improve the user experience.",
     "Cookies are small text files stored in your browser. You can restrict or disable the use of cookies at any time in your browser settings. If you disable cookies, some functions of the website may be limited.",
     "If cookies are used on the website for marketing purposes or advanced analytics, you will be informed during your first visit by means of a banner and given the option to provide consent. You may withdraw your consent at any time by changing the settings or adjusting your browser settings."
   ]
 }
- 
+};
