@@ -792,14 +792,6 @@ body.menu-open,body.modal-open{overflow:hidden}
 .input-error {
   border-color: #c87171 !important;
 }
-.display{
-  font-family:"Cormorant Garamond",Georgia,serif;
-  font-weight:600;
-  letter-spacing:-.02em;
-  line-height:1.06;
-  margin:0;
-}
-
 .hero-copy .display,
 .page-hero-copy .display{
   line-height:1.02;
