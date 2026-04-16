@@ -353,7 +353,11 @@ body.menu-open,body.modal-open{overflow:hidden}
 .faq-answer{padding:0 24px 24px;color:var(--muted);line-height:1.8}
 
 .page-hero-copy{max-width:720px}
-.page-hero-copy .display{max-width:10ch}
+.page-hero-copy .display{
+  max-width:10ch;
+  line-height:1.04;
+  margin-bottom:18px;
+}
 .page-hero-copy .script{display:block;font-size:42px;color:#ead7c5;margin:10px 0 8px}
 .page-hero-copy .lead{color:rgba(255,255,255,.8)}
 
@@ -792,11 +796,6 @@ body.menu-open,body.modal-open{overflow:hidden}
 .input-error {
   border-color: #c87171 !important;
 }
-.hero-copy .display,
-.page-hero-copy .display{
-  line-height:1.02;
-}
-
 .section-header .display{
   margin-bottom:10px;
 }
