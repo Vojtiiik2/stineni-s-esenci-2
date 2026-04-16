@@ -24,7 +24,7 @@ heroSlides: [
 homeAboutH: "Navrhujeme a realizujeme vnitřní stínění",
 
 homeAbout: [
-  "Pomáháme prostoru najít správnou míru světla, soukromí a klidu. Stínění navrhujeme tak, aby působilo přirozeně a dlouhodobě dobře fungovalo."
+  "Stínění není samostatný prvek. Vybíráme ho v návaznosti na prostor, materiály i způsob používání tak, aby celek působil klidně a jistě."
 ],
 
     serviceCardCta: "Zobrazit orientační ceny →",
