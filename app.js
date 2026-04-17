@@ -20,7 +20,7 @@ const HOME_SERVICE_IMAGES = [
   "assets/img/pricing/pricing-02.webp",
   "assets/img/pricing/roleta-rimska.webp",
   "assets/img/pricing/systemy-kolejnice.webp",
-   "assets/img/pricing/pricing-05.webp",
+  "assets/img/pricing/pricing-05.webp",
 ];
 
 const ATMOS_IMAGES = [
@@ -144,7 +144,7 @@ function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
     <>
       <header className="site-header">
         <div className="shell site-header-inner">
-          <button className="brand" onClick={() => { go("/"); setMenuOpen(false); }} aria-label="Domů">
+          <button className="brand" onClick={() => { go("/"); setMenuOpen(false); }} aria-label={lang === "en" ? "Home" : "Domů"}>
             <img src="assets/img/logo/Logo-symbol.svg" alt="Logo" />
             <span className="brand-text">
               <small>{t.brand1}</small>
@@ -152,7 +152,7 @@ function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
             </span>
           </button>
 
-          <nav className="header-nav" aria-label="Hlavní navigace">
+          <nav className="header-nav" aria-label={lang === "en" ? "Main navigation" : "Hlavní navigace"}>
             {NAV_ROUTES.map((item, index) => (
               <button
                 key={item.path}
@@ -165,7 +165,7 @@ function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
           </nav>
 
           <div className="header-actions">
-            <div className="lang-switch" aria-label="Přepínač jazyka">
+            <div className="lang-switch" aria-label={lang === "en" ? "Language switcher" : "Přepínač jazyka"}>
               <button className={lang === "cs" ? "active" : ""} onClick={() => setLang("cs")}>CZ</button>
               <button className={lang === "en" ? "active" : ""} onClick={() => setLang("en")}>EN</button>
             </div>
@@ -173,7 +173,7 @@ function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
             <button
               className={`icon-button ${menuOpen ? "open" : ""}`}
               onClick={() => setMenuOpen((s) => !s)}
-              aria-label="Menu"
+              aria-label={lang === "en" ? "Menu" : "Menu"}
             >
               <span />
             </button>
@@ -206,6 +206,7 @@ function Header({ t, lang, setLang, route, menuOpen, setMenuOpen }) {
 
 function Hero({ t, title, lead, image, small = false }) {
   const [active, setActive] = useState(0);
+  const isEn = (document.documentElement.lang || "cs") === "en";
 
   useEffect(() => {
     if (small) return;
@@ -231,18 +232,18 @@ function Hero({ t, title, lead, image, small = false }) {
       <div className="shell hero-content">
         {small ? (
           <div className="page-hero-copy reveal visible">
-            <div className="hero-kicker">Praha · okolí · interiéry</div>
-            <span className="script">Stínění s esencí</span>
+            <div className="hero-kicker">{t.heroKickerSmall || (isEn ? "Prague · surrounding areas · interiors" : "Praha · okolí · interiéry")}</div>
+            <span className="script">{t.brand2}</span>
             <h1 className="display h2">{title}</h1>
             {lead && <p className="lead">{lead}</p>}
           </div>
         ) : (
           <div className="hero-grid">
             <div className="hero-copy reveal visible">
-              <div className="hero-kicker">Jana Segelberg · Interiérové stínění</div>
-              <span className="script">Stínění s esencí</span>
-              <h1 className="display h1">Záclony, závěsy, rolety a garnýže podle vašeho prostoru</h1>
-              <p className="lead">{t.homeAbout}</p>
+              <div className="hero-kicker">{t.heroKicker || (isEn ? "Jana Segelberg · Interior Window Treatments" : "Jana Segelberg · Interiérové stínění")}</div>
+              <span className="script">{t.brand2}</span>
+              <h1 className="display h1">{(t.heroSlides && t.heroSlides[0] && t.heroSlides[0].h1) || (isEn ? "Sheers, curtains, blinds and curtain rods shaped around your space" : "Záclony, závěsy, rolety a garnýže podle vašeho prostoru")}</h1>
+              <p className="lead">{Array.isArray(t.homeAbout) ? t.homeAbout[0] : t.homeAbout}</p>
               <div className="hero-actions">
                 <button className="button button-primary" onClick={() => go("/contact")}>{t.cta}</button>
                 <button className="button button-ghost" onClick={() => go("/gallery")}>{t.galleryH}</button>
@@ -250,10 +251,11 @@ function Hero({ t, title, lead, image, small = false }) {
             </div>
             <div className="hero-panel reveal visible">
               <strong>{t.heroSub}</strong>
-              <span className="script">Světlo, klid a detail</span>
+              <span className="script">{t.heroPanelTitle || (isEn ? "Light, calm and detail" : "Světlo, klid a detail")}</span>
               <p>
-                Navrhujeme a realizujeme vnitřní stínění tak, aby prostor působil přirozeně,
-                harmonicky a dlouhodobě dobře fungoval.
+                {t.heroPanelText || (isEn
+                  ? "We design and deliver interior window treatments so the space feels natural, harmonious and works beautifully over time."
+                  : "Navrhujeme a realizujeme vnitřní stínění tak, aby prostor působil přirozeně, harmonicky a dlouhodobě dobře fungoval.")}
               </p>
             </div>
           </div>
@@ -264,6 +266,8 @@ function Hero({ t, title, lead, image, small = false }) {
 }
 
 function TrustBand({ t }) {
+  const isEn = (document.documentElement.lang || "cs") === "en";
+
   return (
     <div className="trust-band">
       <div className="shell trust-grid">
@@ -271,7 +275,13 @@ function TrustBand({ t }) {
           <div className="trust-card reveal" key={item.label + item.value}>
             <strong>{item.value}</strong>
             <span>{item.label}</span>
-            <small>{item.label === "let zkušeností" ? "V interiérovém stínění a práci s textilem." : item.label}</small>
+            <small>
+              {item.label === "let zkušeností"
+                ? "V interiérovém stínění a práci s textilem."
+                : item.label === "years of experience"
+                ? "In interior window treatments and textile work."
+                : item.label}
+            </small>
           </div>
         ))}
       </div>
@@ -280,6 +290,8 @@ function TrustBand({ t }) {
 }
 
 function Home({ t }) {
+  const isEn = (document.documentElement.lang || "cs") === "en";
+
   const featuredWorks = [
     { src: OUR_WORK[0], cols: "span 2" },
     { src: OUR_WORK[1], cols: "span 4" },
@@ -297,22 +309,24 @@ function Home({ t }) {
       <section className="section">
         <div className="shell grid-2 feature-split">
           <div className="feature-media reveal">
-            <img src="assets/img/Onas/onas-01.webp" alt="Vzorky a materiály" />
+            <img src="assets/img/Onas/onas-01.webp" alt={isEn ? "Fabric samples and materials" : "Vzorky a materiály"} />
             <div className="feature-note">
-              <span className="script">Návrh začíná v prostoru</span>
+              <span className="script">{t.featureNoteTitle || (isEn ? "Design begins in the space itself" : "Návrh začíná v prostoru")}</span>
               <div>
-                Materiál vybíráme v reálném světle, v konkrétním interiéru a s ohledem na jeho rytmus.
+                {t.featureNoteText || (isEn
+                  ? "We choose materials in real light, in the actual interior and with respect to its rhythm."
+                  : "Materiál vybíráme v reálném světle, v konkrétním interiéru a s ohledem na jeho rytmus.")}
               </div>
             </div>
           </div>
 
           <div className="feature-copy reveal">
             <h2 className="display h2">{t.homeAboutH}</h2>
-            <p className="copy">{t.homeAbout}</p>
+            <p className="copy">{Array.isArray(t.homeAbout) ? t.homeAbout[0] : t.homeAbout}</p>
             <p className="copy">
-              Pracujeme s tím, co v prostoru skutečně hraje roli — světlo, proporce, potřeba soukromí,
-              způsob používání interiéru i jemnost materiálů. Nejde jen o to okno zakrýt. Jde o to,
-              aby prostor fungoval lépe.
+              {t.homeAboutExtra || (isEn
+                ? "We work with what truly matters in a space — light, proportion, the need for privacy, the way the interior is used and the softness of materials. It is not just about covering a window. It is about helping the space work better."
+                : "Pracujeme s tím, co v prostoru skutečně hraje roli — světlo, proporce, potřeba soukromí, způsob používání interiéru i jemnost materiálů. Nejde jen o to okno zakrýt. Jde o to, aby prostor fungoval lépe.")}
             </p>
             <div style={{ marginTop: 24, display: "flex", gap: 14, flexWrap: "wrap" }}>
               <button className="button button-primary" onClick={() => go("/process")}>
@@ -329,9 +343,9 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <h2 className="display h2">Řešení, která drží atmosféru i funkci</h2>
+            <h2 className="display h2">{t.homeServicesTitle || (isEn ? "Solutions that hold both atmosphere and function" : "Řešení, která drží atmosféru i funkci")}</h2>
             <p className="lead">
-              Každá vrstva má svoji roli. Působení prostoru stojí na detailu, ne na množství prvků.
+              {t.homeServicesLead || (isEn ? "Every layer has its role. The feeling of a space stands on detail, not on the number of elements." : "Každá vrstva má svoji roli. Působení prostoru stojí na detailu, ne na množství prvků.")}
             </p>
           </div>
 
@@ -368,14 +382,14 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <h2 className="display h2">Interiér se nemění jen vzhledem. Mění se pocitem.</h2>
+            <h2 className="display h2">{t.homeAtmosTitle || (isEn ? "An interior changes not only in appearance. It changes in feeling." : "Interiér se nemění jen vzhledem. Mění se pocitem.")}</h2>
             <p className="lead">{t.inspLead}</p>
           </div>
 
           <div className="atmos-grid">
             {ATMOS_IMAGES.map((src, index) => (
               <figure className="atmos-card reveal" key={src}>
-                <img src={src} alt={`Atmosféra interiéru ${index + 1}`} />
+                <img src={src} alt={isEn ? `Interior atmosphere ${index + 1}` : `Atmosféra interiéru ${index + 1}`} />
                 <figcaption>{(t.inspTags || [])[index]}</figcaption>
               </figure>
             ))}
@@ -386,7 +400,7 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <h2 className="display h2">Luxusní pocit nevzniká okázalostí. Vzniká jistotou.</h2>
+            <h2 className="display h2">{t.homeLuxuryTitle || (isEn ? "A luxurious feeling does not come from showiness. It comes from confidence." : "Luxusní pocit nevzniká okázalostí. Vzniká jistotou.")}</h2>
           </div>
 
           <div className="grid-3">
@@ -400,7 +414,7 @@ function Home({ t }) {
                 }}
                 style={{ cursor: "pointer" }}
               >
-                <div className="script">Detail</div>
+                <div className="script">{t.benefitDetailLabel || (isEn ? "Detail" : "Detail")}</div>
                 <h3>{item.name}</h3>
                 <p>{item.note}</p>
               </article>
@@ -412,9 +426,9 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <h2 className="display h2">Hotové realizace</h2>
+            <h2 className="display h2">{t.homeProjectsTitle || (isEn ? "Completed projects" : "Hotové realizace")}</h2>
             <p className="lead">
-              Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.
+              {t.homeProjectsLead || (isEn ? "A selection of interiors where window treatments complete calm, softness and the right measure of light." : "Výběr z interiérů, kde stínění dotváří klid, měkkost a správnou míru světla.")}
             </p>
           </div>
 
@@ -427,7 +441,7 @@ function Home({ t }) {
                 style={{ gridColumn: item.cols }}
                 onClick={() => openGalleryLightbox(index, featuredWorks.map((w) => w.src))}
               >
-                <img src={item.src} alt={`Realizace ${index + 1}`} />
+                <img src={item.src} alt={isEn ? `Project ${index + 1}` : `Realizace ${index + 1}`} />
               </button>
             ))}
           </div>
@@ -443,7 +457,7 @@ function Home({ t }) {
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal">
-            <h2 className="display h2">To podstatné, co chce klient vědět předem</h2>
+            <h2 className="display h2">{t.homeFaqTitle || (isEn ? "The essentials a client wants to know in advance" : "To podstatné, co chce klient vědět předem")}</h2>
           </div>
           <Faq items={t.faq || []} />
         </div>
@@ -451,7 +465,7 @@ function Home({ t }) {
 
       <section className="section">
         <div className="shell accent-surface card card-inner reveal">
-          <h2 className="display h2">Nejdřív se podíváme na váš prostor. Až potom navrhujeme.</h2>
+          <h2 className="display h2">{t.homeFinalCtaTitle || (isEn ? "First we look at your space. Only then do we design." : "Nejdřív se podíváme na váš prostor. Až potom navrhujeme.")}</h2>
           <p className="lead">{t.homeCtaNote}</p>
           <div style={{ marginTop: 28, display: "flex", gap: 14, flexWrap: "wrap" }}>
             <button className="button button-primary" onClick={() => go("/contact")}>
@@ -466,7 +480,10 @@ function Home({ t }) {
     </>
   );
 }
+
 function Process({ t }) {
+  const isEn = (document.documentElement.lang || "cs") === "en";
+
   React.useEffect(() => {
     const target = localStorage.getItem("openProcessSection");
     if (target !== "behind") return;
@@ -488,7 +505,7 @@ function Process({ t }) {
         small
         image="assets/img/hero/process-hero-v2.webp"
         title={t.processH}
-        lead="Od prvního zaměření po finální dekorování. Každý krok má svoje tempo, důvod i přesnost."
+        lead={t.processLead || (isEn ? "From the first measurement to final styling. Every step has its own pace, reason and precision." : "Od prvního zaměření po finální dekorování. Každý krok má svoje tempo, důvod i přesnost.")}
       />
 
       <section className="section">
@@ -528,7 +545,7 @@ function Process({ t }) {
 
           <div className="quote-panel reveal" style={{ marginTop: 22 }}>
             <div>
-              <span className="script">Výsledek má být přirozený</span>
+              <span className="script">{t.processQuoteTitle || (isEn ? "The result should feel natural" : "Výsledek má být přirozený")}</span>
               <p>{t.processEnding}</p>
             </div>
             <button className="button button-ghost" onClick={() => go("/contact")}>
@@ -542,6 +559,8 @@ function Process({ t }) {
 }
 
 function Pricing({ t, openPricing }) {
+  const isEn = (document.documentElement.lang || "cs") === "en";
+
   React.useEffect(() => {
     const items = t.pricingItems || [];
 
@@ -578,14 +597,14 @@ function Pricing({ t, openPricing }) {
         small
         image="assets/img/hero/pricing-hero.webp"
         title={t.priceH}
-        lead="Orientační ceny a typy řešení pro představu ještě před konzultací."
+        lead={t.pricingLead || (isEn ? "Guide prices and types of solutions to give you a clear idea before the consultation." : "Orientační ceny a typy řešení pro představu ještě před konzultací.")}
       />
 
       <section className="section">
         <div className="shell">
           <div className="section-header reveal">
             <h2 className="display h2">
-              Cena se odvíjí od prostoru, materiálu i detailu provedení
+              {t.pricingSectionTitle || (isEn ? "Price depends on the space, the material and the level of detail" : "Cena se odvíjí od prostoru, materiálu i detailu provedení")}
             </h2>
             <p className="lead">{(t.pricingIntro || []).join(" ")}</p>
           </div>
@@ -620,7 +639,7 @@ function Pricing({ t, openPricing }) {
                       className="button button-secondary"
                       onClick={() => openPricing(item)}
                     >
-                      Zobrazit orientační ceny
+                      {t.pricingOpenButton || (isEn ? "View guide prices" : "Zobrazit orientační ceny")}
                     </button>
 
                     <button
@@ -643,7 +662,9 @@ function Pricing({ t, openPricing }) {
     </>
   );
 }
+
 function Gallery({ t }) {
+  const isEn = (document.documentElement.lang || "cs") === "en";
   const [ratios, setRatios] = React.useState({});
   const [perRow, setPerRow] = React.useState(
     typeof window !== "undefined" && window.innerWidth <= 768 ? 2 : 3
@@ -673,17 +694,17 @@ function Gallery({ t }) {
         small
         image="assets/img/hero/gallery-hero.webp"
         title={t.galleryH}
-        lead="Výběr realizací záclon, závěsů, rolet a technických systémů."
+        lead={t.galleryLead || (isEn ? "A selection of completed sheers, curtains, blinds and technical systems." : "Výběr realizací záclon, závěsů, rolet a technických systémů.")}
       />
 
       <section className="section section-tight">
         <div className="shell">
           <div className="section-header reveal visible">
             <h2 className="display h2">
-              Realizace, ve kterých stínění nepůsobí navíc. Působí správně.
+              {t.gallerySectionTitle || (isEn ? "Projects where window treatments do not feel extra. They simply feel right." : "Realizace, ve kterých stínění nepůsobí navíc. Působí správně.")}
             </h2>
             <p className="lead">
-              Výběr realizací záclon, závěsů, rolet a technických systémů.
+              {t.gallerySectionLead || (isEn ? "A selection of completed sheers, curtains, blinds and technical systems." : "Výběr realizací záclon, závěsů, rolet a technických systémů.")}
             </p>
           </div>
 
@@ -704,7 +725,7 @@ function Gallery({ t }) {
                     >
                       <img
                         src={src}
-                        alt={`Realizace ${absoluteIndex + 1}`}
+                        alt={isEn ? `Project ${absoluteIndex + 1}` : `Realizace ${absoluteIndex + 1}`}
                         className="ow-img-page"
                         loading="lazy"
                         decoding="async"
@@ -733,7 +754,7 @@ function Gallery({ t }) {
       <section className="section">
         <div className="shell">
           <div className="section-header reveal visible">
-            <h2 className="display h2">Spolupráce s architekty a designéry</h2>
+            <h2 className="display h2">{t.galleryPartnersH || (isEn ? "We work with architects and designers" : "Spolupráce s architekty a designéry")}</h2>
             <p className="lead">{t.galleryPartnersP}</p>
           </div>
 
@@ -769,6 +790,7 @@ function Gallery({ t }) {
     </>
   );
 }
+
 function Essence({ t }) {
   return (
     <>
@@ -776,7 +798,6 @@ function Essence({ t }) {
       <section className="section">
         <div className="shell">
           <div className="essence-box reveal">
-          
             <h2 className="display h2">{t.essenceBoxH}</h2>
             <div className="script">{t.essenceBoxFoot}</div>
             <p>{t.essenceBoxP}</p>
@@ -788,6 +809,7 @@ function Essence({ t }) {
 }
 
 function Contact({ t }) {
+  const isEn = (document.documentElement.lang || "cs") === "en";
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [files, setFiles] = useState([]);
   const [sending, setSending] = useState(false);
@@ -799,12 +821,6 @@ function Contact({ t }) {
   const phoneOk = form.phone.trim().length >= 6;
   const messageOk = form.message.trim().length >= 5;
   const canSend = nameOk && emailOk && phoneOk && messageOk;
-
-  function fieldClass(isValid) {
-    return isValid
-      ? ""
-      : " input-error";
-  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -833,9 +849,9 @@ function Contact({ t }) {
       setForm({ name: "", email: "", phone: "", message: "" });
       setFiles([]);
       setTouched(false);
-      setStatus({ kind: "success", text: "Děkuji. Zpráva byla odeslána." });
+      setStatus({ kind: "success", text: isEn ? "Thank you. Your message has been sent." : "Děkuji. Zpráva byla odeslána." });
     } catch (err) {
-      setStatus({ kind: "error", text: "Odeslání se nepodařilo. Zkuste to prosím znovu." });
+      setStatus({ kind: "error", text: isEn ? "Sending failed. Please try again." : "Odeslání se nepodařilo. Zkuste to prosím znovu." });
     } finally {
       setSending(false);
     }
@@ -848,7 +864,7 @@ function Contact({ t }) {
         small
         image="assets/img/hero/contact-hero01.webp"
         title={t.contactH}
-        lead="Pošlete zprávu, fotografie prostoru a ozveme se s dalším krokem."
+        lead={t.contactLead || (isEn ? "Send us a message, a few photos of the space and we will get back to you with the next step." : "Pošlete zprávu, fotografie prostoru a ozveme se s dalším krokem.")}
       />
 
       <section className="section contact-section">
@@ -869,7 +885,7 @@ function Contact({ t }) {
                 </div>
 
                 <div>
-                  <strong>Adresa</strong>
+                  <strong>{t.contactAddressLabel || (isEn ? "Address" : "Adresa")}</strong>
                   <p>Navrátilova 1334/16<br />110 00 Praha 1</p>
                 </div>
 
@@ -902,17 +918,18 @@ function Contact({ t }) {
           </div>
 
           <article className="card contact-card reveal">
-            <h3>Nezávazná poptávka</h3>
+            <h3>{t.contactFormTitle || (isEn ? "Non-binding enquiry" : "Nezávazná poptávka")}</h3>
 
             <p className="form-note" style={{ marginTop: 0, marginBottom: 18 }}>
-              Popište nám prostor, pošlete fotografie a společně najdeme řešení, které
-              bude dávat smysl právě u vás.
+              {t.contactFormIntro || (isEn
+                ? "Describe the space, send us a few photos and together we will find a solution that makes sense for your interior."
+                : "Popište nám prostor, pošlete fotografie a společně najdeme řešení, které bude dávat smysl právě u vás.")}
             </p>
 
             <div className="form-note" style={{ marginTop: 0, marginBottom: 24 }}>
-              • Ozveme se vám s návrhem dalšího postupu<br />
-              • Domluvíme termín konzultace<br />
-              • Vzorky přivezeme přímo do vašeho interiéru
+              {isEn ? "• We will get back to you with the next recommended step" : "• Ozveme se vám s návrhem dalšího postupu"}<br />
+              {isEn ? "• We will arrange a consultation date" : "• Domluvíme termín konzultace"}<br />
+              {isEn ? "• We bring samples directly to your interior" : "• Vzorky přivezeme přímo do vašeho interiéru"}
             </div>
 
             <form onSubmit={handleSubmit} noValidate>
@@ -972,16 +989,18 @@ function Contact({ t }) {
                     multiple
                     onChange={(e) => setFiles(Array.from(e.target.files || []).slice(0, 5))}
                   />
-                  <small>Můžete přiložit až 5 fotografií.</small>
+                  <small>{isEn ? "You can attach up to 5 photos." : "Můžete přiložit až 5 fotografií."}</small>
                 </div>
               </div>
 
               <p className="form-note">
-                Popište nám prostor, o co jde a jaký výsledek očekáváte. Vzorky vozíme přímo do interiéru.
+                {t.contactFormNote || (isEn
+                  ? "Tell us about the space, what you need and what result you expect. We bring samples directly to the interior."
+                  : "Popište nám prostor, o co jde a jaký výsledek očekáváte. Vzorky vozíme přímo do interiéru.")}
               </p>
 
               <button className="button button-primary" type="submit" disabled={sending || !canSend}>
-                {sending ? "Odesílám…" : "Poslat nezávaznou poptávku"}
+                {sending ? (isEn ? "Sending…" : "Odesílám…") : (t.contactSubmitCta || (isEn ? "Send non-binding enquiry" : "Poslat nezávaznou poptávku"))}
               </button>
 
               {status.text && <div className={`status ${status.kind}`}>{status.text}</div>}
@@ -992,8 +1011,6 @@ function Contact({ t }) {
     </>
   );
 }
-
-
 
 function LegalPage({ t, kind }) {
   const map = {
@@ -1041,7 +1058,7 @@ function Footer({ t }) {
     <footer className="footer">
       <div className="shell footer-grid">
         <div className="footer-brand">
-          <button className="brand" onClick={() => go("/")}> 
+          <button className="brand" onClick={() => go("/")}>
             <img src="assets/img/logo/Logo-symbol.svg" alt="Logo" />
             <span className="brand-text">
               <small>{t.brand1}</small>
@@ -1178,6 +1195,8 @@ function PricingModal({ t, item, onClose }) {
 }
 
 function Lightbox({ state, setState }) {
+  const isEn = (document.documentElement.lang || "cs") === "en";
+
   useEffect(() => {
     if (!state.open) return;
     document.body.classList.add("modal-open");
@@ -1202,17 +1221,23 @@ function Lightbox({ state, setState }) {
       <div className="modal-panel lightbox" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header" style={{ color: "#fff" }}>
           <div>
-            <h3>Realizace {state.index + 1}</h3>
-            <p style={{ color: "rgba(255,255,255,.72)" }}>Procházejte fotografie šipkami nebo kliknutím na tlačítka.</p>
+            <h3>{isEn ? `Project ${state.index + 1}` : `Realizace ${state.index + 1}`}</h3>
+            <p style={{ color: "rgba(255,255,255,.72)" }}>
+              {isEn ? "Browse the photos using the arrow keys or by clicking the buttons." : "Procházejte fotografie šipkami nebo kliknutím na tlačítka."}
+            </p>
           </div>
-          <button className="modal-close" onClick={() => setState((s) => ({ ...s, open: false }))}>Zavřít</button>
+          <button className="modal-close" onClick={() => setState((s) => ({ ...s, open: false }))}>{t?.close || (isEn ? "Close" : "Zavřít")}</button>
         </div>
         <div className="lightbox-stage">
-          <img src={src} alt={`Realizace ${state.index + 1}`} />
+          <img src={src} alt={isEn ? `Project ${state.index + 1}` : `Realizace ${state.index + 1}`} />
         </div>
         <div className="lightbox-nav">
-          <button className="button button-secondary" onClick={() => setState((s) => ({ ...s, index: (s.index - 1 + s.images.length) % s.images.length }))}>Předchozí</button>
-          <button className="button button-primary" onClick={() => setState((s) => ({ ...s, index: (s.index + 1) % s.images.length }))}>Další</button>
+          <button className="button button-secondary" onClick={() => setState((s) => ({ ...s, index: (s.index - 1 + s.images.length) % s.images.length }))}>
+            {isEn ? "Previous" : "Předchozí"}
+          </button>
+          <button className="button button-primary" onClick={() => setState((s) => ({ ...s, index: (s.index + 1) % s.images.length }))}>
+            {isEn ? "Next" : "Další"}
+          </button>
         </div>
       </div>
     </div>
@@ -1253,7 +1278,7 @@ function App() {
       <main>{page}</main>
       <Footer t={t} />
       {pricingItem && <PricingModal t={t} item={pricingItem} onClose={() => setPricingItem(null)} />}
-      <Lightbox state={lightbox} setState={setLightbox} />
+      <Lightbox state={lightbox} setState={setLightbox} t={t} />
     </>
   );
 }
